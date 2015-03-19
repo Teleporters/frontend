@@ -46,6 +46,8 @@ function start(img) {
   var startScreen = document.querySelector("article");
   startScreen.parentNode.removeChild(startScreen);
 
+  document.querySelector("a.back").style.display = "inline";
+
   material.map = textures[img];
   material.needsUpdate = true;
   World.init({
