@@ -1,11 +1,12 @@
 {
   "name": "Spots3D",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Some 3D scenes to look around with Cardboard",
   "main": "index.js",
   "scripts": {
     "build": "browserify js/main.js | uglifyjs -mc > app.js",
-    "dev": "watchify js/main.js -v -o app.js"
+    "dev": "watchify js/main.js -v -o app.js",
+    "deploy": "npm run build && cp -rf imgs app.js manifest.json manifest.appcache index.html deploy/ && surge deploy"
   },
   "author": "Martin Naumann <martin@geekonaut.de>",
   "license": "ISC",
