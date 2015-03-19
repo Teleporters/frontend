@@ -1,0 +1,60 @@
+<!doctype html>
+<html manifest="manifest.appcache">
+    <head>
+        <title>Spots3D</title>
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="icon" sizes="192x192" href="imgs/icon_192.png">
+        <link rel="icon" sizes="128x128" href="imgs/icon_128.png">
+        <link rel="apple-touch-icon" sizes="128x128" href="imgs/icon_128.png">
+        <link rel="apple-touch-icon-precomposed" sizes="128x128" href="imgs/icon_128.png">
+        <link rel="manifest" href="manifest.json">
+
+        <style>
+            html, body, canvas {
+                margin: 0;
+                padding: 0;
+                width: 100%;
+                width: 100vw;
+                height: 100%;
+                height: 100vh;
+
+                text-align: center;
+            }
+
+            .tile {
+              width:   420px;
+              padding:  10px;
+              display: inline-block;
+
+              text-align: center;
+            }
+        </style>
+    </head>
+<body>
+  <article>
+    <h1>Spots</h1>
+    <div class="tile">
+      <a href="#show=zurich_1">
+        <img src="imgs/zurich_1-thumb.png" alt="Zurich, Platzspitz" title="Zurich, Platzspitz">
+        <div>Visit Zurich Platzspitz</div>
+      </div>
+    </div>
+
+    <div class="tile">
+      <a href="#show=zurich_2">
+        <img src="imgs/zurich_2-thumb.png" alt="Zurich, Rooftops" title="Zurich, Rooftops">
+        <div>Visit Zurich Rooftops</div>
+      </a>
+    </div>
+
+    <div class="tile">
+      <a href="#show=zurich_3">
+        <img src="imgs/zurich_3-thumb.png" alt="Zurich, Main Station" title=="Zurich, Main Station">
+        <div>Visit Zurich Main Station</div>
+      </a>
+    </div>
+  </article>
+  <script src="app.js"></script>
+</body>
+</html>

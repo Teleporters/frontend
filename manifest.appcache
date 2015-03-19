@@ -1,0 +1,24 @@
+CACHE MANIFEST
+#V1 2015-03-19
+
+# Application
+index.html
+app.js
+
+# Panoramas
+imgs/zurich_1.jpg
+imgs/zurich_2.jpg
+imgs/zurich_3.jpg
+
+# Thumbs
+imgs/zurich_1-thumb.png
+imgs/zurich_2-thumb.png
+imgs/zurich_3-thumb.png
+
+# Icons
+imgs/icon_128.png
+imgs/icon_192.png
+imgs/icon_256.png
+
+# Meta
+manifest.json
