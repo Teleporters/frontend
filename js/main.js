@@ -5,6 +5,16 @@ var World = require('three-world'),
     VRControls = require('./vendor/VRControls'),
     WebVRPolyfill = require('./vendor/new-webvr-polyfill');
 
+var isWebGLAvailable = (function() {
+  try {
+    var canvas = document.createElement("canvas");
+    return !! window.WebGLRenderingContext
+                    && (canvas.getContext("webgl") || canvas.getContext("experimental-webgl"));
+  } catch(e) {
+    return false;
+  }
+})();
+
 new WebVRPolyfill();
 
 var onRender = function() {
@@ -32,14 +42,18 @@ var material = new THREE.MeshBasicMaterial({wireframe: false, side: THREE.BackSi
     vrmgr    = null,
     effect   = null;
 
-window.addEventListener("hashchange", function() {
+if(isWebGLAvailable) {
+  window.addEventListener("hashchange", function() {
+    if(window.location.hash.slice(1,5) == "show") {
+      start(window.location.hash.slice(6));
+    }
+  });
+
   if(window.location.hash.slice(1,5) == "show") {
     start(window.location.hash.slice(6));
   }
-});
-
-if(window.location.hash.slice(1,5) == "show") {
-  start(window.location.hash.slice(6));
+} else {
+  document.getElementById("fallback").style.display = "block";
 }
 
 function start(img) {
