@@ -32,7 +32,8 @@ var onRender = function() {
 var textures = {
   zurich_1: THREE.ImageUtils.loadTexture("imgs/zurich_1.jpg"),
   zurich_2: THREE.ImageUtils.loadTexture("imgs/zurich_2.jpg"),
-  zurich_3: THREE.ImageUtils.loadTexture("imgs/zurich_3.jpg")
+  zurich_3: THREE.ImageUtils.loadTexture("imgs/zurich_3.jpg"),
+  zurich_4: THREE.ImageUtils.loadTexture("imgs/zurich_4.jpg")
 };
 
 var material = new THREE.MeshBasicMaterial({wireframe: false, side: THREE.BackSide}),
@@ -57,6 +58,7 @@ if(isWebGLAvailable) {
 }
 
 function start(img) {
+  console.log("Showing " + img);
   var startScreen = document.querySelector("article");
   startScreen.parentNode.removeChild(startScreen);
 
