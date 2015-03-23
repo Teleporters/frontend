@@ -1,5 +1,5 @@
 CACHE MANIFEST
-#V5 2015-03-20
+#V6 2015-03-22
 
 # Application
 index.html
@@ -9,11 +9,13 @@ app.js
 imgs/zurich_1.jpg
 imgs/zurich_2.jpg
 imgs/zurich_3.jpg
+imgs/zurich_4.jpg
 
 # Thumbs
 imgs/zurich_1-thumb.png
 imgs/zurich_2-thumb.png
 imgs/zurich_3-thumb.png
+imgs/zurich_4-thumb.png
 
 # Icons
 imgs/icon_128.png
