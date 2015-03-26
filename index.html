@@ -24,7 +24,7 @@
             }
 
             .tile {
-              width:   420px;
+              width:   270px;
               padding:  10px;
               display: inline-block;
 
@@ -46,6 +46,47 @@
               height: 100%;
               height: 100vh;
             }
+
+            .dropcontainer {
+              position: relative;
+              text-align: center;
+            }
+
+            .dropcontainer label {
+              position: absolute;
+              width: 100%;
+              left: 0;
+              top: 0.5em;
+            }
+
+            .dropzone /deep/ input {
+              display: none;
+            }
+
+            .dropzone >>> input {
+              display: none;
+            }
+
+            .dropzone {
+              display: block;
+              width: 75%;
+              height: 50px;
+              border: 2px dashed #888;
+              padding: 0.5em;
+              padding-top: 2em;
+              background: #ffc;
+              margin: 0 auto;
+              text-align: center;
+            }
+
+            .dropzone-hover {
+              border: 4px dashed #0a0;
+              background: #afa;
+            }
+
+            #loading {
+              margin-top: 2em;
+            }
         </style>
     </head>
 <body>
@@ -54,38 +95,42 @@
     <h1>Spots</h1>
     <h2>New Spot</h2>
 
-    <div>
-      <p>Select a photosphere image from your device and hit "Go".</p>
-      <input type="file" id="spot_img">
-      <button id="upload">Go</button>
+    <div class="dropcontainer">
+      <div id="loading" style="display: none">
+        <img src="imgs/loading.gif" alt="Loading...">
+        <br>
+        Loading...
+      </div>
+      <label>Select a photosphere image from your device by drag&amp;drop or by clicking here.</label>
+      <input type="file" accept="image/*" class="dropzone" id="spot_img">
     </div>
 
-    <h2>Demo spots</h2>
+    <h2>Featured spots</h2>
 
     <div class="tile">
       <a href="#show=zurich_1">
-        <img src="imgs/zurich_1-thumb.png" alt="Zurich, Platzspitz" title="Zurich, Platzspitz">
+        <img src="https://res.cloudinary.com/geekonaut/image/upload/c_thumb,h_250,w_250/spots/zurich_1.jpg" alt="Zurich, Platzspitz" title="Zurich, Platzspitz">
         <div>Visit Zurich Platzspitz</div>
       </div>
     </div>
 
     <div class="tile">
       <a href="#show=zurich_2">
-        <img src="imgs/zurich_2-thumb.png" alt="Zurich, Rooftops" title="Zurich, Rooftops">
+        <img src="https://res.cloudinary.com/geekonaut/image/upload/c_thumb,h_250,w_250/spots/zurich_2.jpg" alt="Zurich, Rooftops" title="Zurich, Rooftops">
         <div>Visit Zurich Rooftops</div>
       </a>
     </div>
 
     <div class="tile">
       <a href="#show=zurich_3">
-        <img src="imgs/zurich_3-thumb.png" alt="Zurich, Main Station" title="Zurich, Main Station">
+        <img src="https://res.cloudinary.com/geekonaut/image/upload/c_thumb,h_250,w_250/spots/zurich_3.jpg" alt="Zurich, Main Station" title="Zurich, Main Station">
         <div>Visit Zurich Main Station</div>
       </a>
     </div>
 
     <div class="tile">
       <a href="#show=zurich_4">
-        <img src="imgs/zurich_4-thumb.png" alt="Zurich, Schmiede Wiedikon" title="Zurich, Schmiede Wiedikon">
+        <img src="https://res.cloudinary.com/geekonaut/image/upload/c_thumb,h_250,w_250/spots/zurich_4.jpg" alt="Zurich, Schmiede Wiedikon" title="Zurich, Schmiede Wiedikon">
         <div>Visit Zurich Schmiede Wiedikon</div>
       </a>
     </div>
@@ -95,10 +140,10 @@
   <noscript>
     <article>
       <ul>
-        <li><a name="show=zurich_1" href="imgs/zurich_1.jpg">Zurich, Platzspitz</a></li>
-        <li><a name="show=zurich_2" href="imgs/zurich_2.jpg">Zurich, Rooftops</a></li>
-        <li><a name="show=zurich_3" href="imgs/zurich_3.jpg">Zurich, Main Station</a></li>
-        <li><a name="show=zurich_4" href="imgs/zurich_4.jpg">Zurich, Schmiede Wiedikon</a></li>
+        <li><a name="show=zurich_1" href="https://res.cloudinary.com/geekonaut/image/upload/spots/zurich_1.jpg">Zurich, Platzspitz</a></li>
+        <li><a name="show=zurich_2" href="https://res.cloudinary.com/geekonaut/image/upload/spots/zurich_2.jpg">Zurich, Rooftops</a></li>
+        <li><a name="show=zurich_3" href="https://res.cloudinary.com/geekonaut/image/upload/spots/zurich_3.jpg">Zurich, Main Station</a></li>
+        <li><a name="show=zurich_4" href="https://res.cloudinary.com/geekonaut/image/upload/spots/zurich_4.jpg">Zurich, Schmiede Wiedikon</a></li>
       </ul>
     </article>
   </noscript>
@@ -106,10 +151,10 @@
   <div id="fallback" style="display: none">
     <article>
       <ul>
-        <li><a name="show=zurich_1" href="imgs/zurich_1.jpg">Zurich, Platzspitz</a></li>
-        <li><a name="show=zurich_2" href="imgs/zurich_2.jpg">Zurich, Rooftops</a></li>
-        <li><a name="show=zurich_3" href="imgs/zurich_3.jpg">Zurich, Main Station</a></li>
-        <li><a name="show=zurich_4" href="imgs/zurich_4.jpg">Zurich, Schmiede Wiedikon</a></li>
+        <li><a name="show=zurich_1" href="https://res.cloudinary.com/geekonaut/image/upload/spots/zurich_1.jpg">Zurich, Platzspitz</a></li>
+        <li><a name="show=zurich_2" href="https://res.cloudinary.com/geekonaut/image/upload/spots/zurich_2.jpg">Zurich, Rooftops</a></li>
+        <li><a name="show=zurich_3" href="https://res.cloudinary.com/geekonaut/image/upload/spots/zurich_3.jpg">Zurich, Main Station</a></li>
+        <li><a name="show=zurich_4" href="https://res.cloudinary.com/geekonaut/image/upload/spots/zurich_4.jpg">Zurich, Schmiede Wiedikon</a></li>
       </ul>
     </article>
   </div>

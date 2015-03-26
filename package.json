@@ -6,7 +6,7 @@
   "scripts": {
     "build": "browserify js/main.js | uglifyjs -mc > app.js",
     "dev": "watchify js/main.js -v -o app.js",
-    "deploy": "npm run build && cp -rf imgs app.js manifest.json manifest.appcache index.html deploy/ && surge deploy"
+    "deploy": "npm run build && rm -rf deploy && mkdir deploy && cp -rf imgs app.js manifest.json manifest.appcache index.html deploy/ && surge deploy"
   },
   "author": "Martin Naumann <martin@geekonaut.de>",
   "license": "ISC",

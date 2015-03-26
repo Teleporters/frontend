@@ -1,26 +1,28 @@
 CACHE MANIFEST
-#V7 2015-03-23
+#V10 2015-03-26
 
 # Application
 index.html
 app.js
 
 # Panoramas
-imgs/zurich_1.jpg
-imgs/zurich_2.jpg
-imgs/zurich_3.jpg
-imgs/zurich_4.jpg
+https://res.cloudinary.com/geekonaut/image/upload/spots/zurich_1.jpg
+https://res.cloudinary.com/geekonaut/image/upload/spots/zurich_2.jpg
+https://res.cloudinary.com/geekonaut/image/upload/spots/zurich_3.jpg
+https://res.cloudinary.com/geekonaut/image/upload/spots/zurich_4.jpg
 
 # Thumbs
-imgs/zurich_1-thumb.png
-imgs/zurich_2-thumb.png
-imgs/zurich_3-thumb.png
-imgs/zurich_4-thumb.png
+https://res.cloudinary.com/geekonaut/image/upload/c_thumb,h_250,w_250/spots/zurich_1.jpg
+https://res.cloudinary.com/geekonaut/image/upload/c_thumb,h_250,w_250/spots/zurich_2.jpg
+https://res.cloudinary.com/geekonaut/image/upload/c_thumb,h_250,w_250/spots/zurich_3.jpg
+https://res.cloudinary.com/geekonaut/image/upload/c_thumb,h_250,w_250/spots/zurich_4.jpg
 
 # Icons
 imgs/icon_128.png
 imgs/icon_192.png
 imgs/icon_256.png
+
+imgs/loading.gif
 
 # Meta
 manifest.json
