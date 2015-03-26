@@ -57,14 +57,34 @@ if(isWebGLAvailable) {
   document.getElementById("fallback").style.display = "block";
 }
 
+document.getElementById("upload").addEventListener("click", function() {
+  var reader = new FileReader();
+  console.log(document.getElementById("spot_img").files);
+  reader.readAsDataURL(document.getElementById("spot_img").files[0]);
+  reader.onload = function(e) {
+    var img = new Image();
+    img.src = e.target.result;
+    img.onload = function() {
+      start(img);
+    }
+  }
+})
+
 function start(img) {
-  console.log("Showing " + img);
   var startScreen = document.querySelector("article");
   startScreen.parentNode.removeChild(startScreen);
 
   document.querySelector("a.back").style.display = "inline";
 
-  material.map = textures[img];
+  if((typeof img) === "string") material.map = textures[img];
+  else {
+    var tex = new THREE.Texture();
+    tex.image = img;
+    tex.sourceFile = "upload.jpg";
+    tex.needsUpdate = true;
+    console.log(tex);
+    material.map = tex;
+  }
   material.needsUpdate = true;
   World.init({
     camDistance: 0,
