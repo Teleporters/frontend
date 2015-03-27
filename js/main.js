@@ -29,6 +29,9 @@ var onRender = function() {
   return true;
 }
 
+// Allow cross-origin texture loading
+THREE.ImageUtils.crossOrigin = '';
+
 var textures = {
   zurich_1: THREE.ImageUtils.loadTexture("https://res.cloudinary.com/geekonaut/image/upload/spots/zurich_1.jpg"),
   zurich_2: THREE.ImageUtils.loadTexture("https://res.cloudinary.com/geekonaut/image/upload/spots/zurich_2.jpg"),
