@@ -48,6 +48,12 @@
             .fallback {
               height: 100%;
               height: 100vh;
+              text-align: left;
+              line-height: 1.2em;
+            }
+
+            .fallback li {
+              padding: 0.5em 0;
             }
 
             .dropcontainer {
@@ -160,7 +166,7 @@
   </article>
 
   <noscript>
-    <article>
+    <article class="fallback">
       <ul>
         <li><a name="show=zurich_1" href="https://res.cloudinary.com/geekonaut/image/upload/spots/zurich_1.jpg">Zurich, Platzspitz</a></li>
         <li><a name="show=zurich_2" href="https://res.cloudinary.com/geekonaut/image/upload/spots/zurich_2.jpg">Zurich, Rooftops</a></li>
@@ -170,7 +176,7 @@
     </article>
   </noscript>
 
-  <div id="fallback" style="display: none">
+  <div id="fallback" class="fallback" style="display: none">
     <article>
       <ul>
         <li><a name="show=zurich_1" href="https://res.cloudinary.com/geekonaut/image/upload/spots/zurich_1.jpg">Zurich, Platzspitz</a></li>
