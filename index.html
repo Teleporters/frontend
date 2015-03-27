@@ -1,9 +1,12 @@
 <!doctype html>
 <html>
     <head>
-        <title>Spots3D</title>
+        <title>Spots - The digital teleporter</title>
+
+        <meta name=viewport content="width=device-width, initial-scale=1">
         <meta name="mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-capable" content="yes">
+
         <link rel="icon" sizes="192x192" href="imgs/icon_192.png">
         <link rel="icon" sizes="128x128" href="imgs/icon_128.png">
         <link rel="apple-touch-icon" sizes="128x128" href="imgs/icon_128.png">
@@ -53,10 +56,24 @@
             }
 
             .dropcontainer label {
-              position: absolute;
-              width: 100%;
-              left: 0;
-              top: 0.5em;
+              visibility: hidden;
+            }
+
+            .dropzone {
+              display: block;
+              width: 80%;
+              height: 3em;
+              border: 2px dashed #888;
+              padding: 1em;
+              background: #ffc;
+              margin: 0 auto;
+              text-align: center;
+              box-sizing: border-box;
+            }
+
+            .dropzone-hover {
+              border: 4px dashed #0a0;
+              background: #afa;
             }
 
             .dropzone /deep/ input {
@@ -67,22 +84,27 @@
               display: none;
             }
 
-            .dropzone {
-              display: block;
-              width: 75%;
-              height: 50px;
-              border: 2px dashed #888;
-              padding: 0.5em;
-              padding-top: 2em;
-              background: #ffc;
-              margin: 0 auto;
+            .dropzone::before {
+              position: relative;
+              width: 90%;
               text-align: center;
+              content: 'Drag a photosphere here or click to select';
+              display: inline-block;
+              padding: 0;
+              margin:  auto;
+              outline: none;
+              white-space: nowrap;
+              -webkit-user-select: none;
+              cursor: pointer;
+              color: #666;
+              text-shadow: 1px 1px #fff;
+              font-weight: 700;
             }
 
-            .dropzone-hover {
-              border: 4px dashed #0a0;
-              background: #afa;
+            .dropbox::-webkit-file-upload-button {
+              visibility: hidden;
             }
+
 
             #loading {
               margin-top: 2em;
@@ -101,7 +123,7 @@
         <br>
         Loading...
       </div>
-      <label>Select a photosphere image from your device by drag&amp;drop or by clicking here.</label>
+      <label>Select a photosphere by drag&amp;drop or clicking here.</label>
       <input type="file" accept="image/*" class="dropzone" id="spot_img">
     </div>
 
