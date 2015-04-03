@@ -67,8 +67,9 @@
 
             .dropzone {
               display: block;
+              cursor: pointer;
               width: 80%;
-              height: 3em;
+              height: 5em;
               border: 2px dashed #888;
               padding: 1em;
               background: #ffc;
@@ -82,17 +83,17 @@
               background: #afa;
             }
 
-            .dropzone /deep/ input {
+            .dropzone::shadow input {
               display: none;
             }
 
-            .dropzone >>> input {
+            .dropzone::-webkit-file-upload-button {
               display: none;
             }
 
             .dropzone::before {
               position: relative;
-              width: 90%;
+              width: 100%;
               text-align: center;
               content: 'Drag a photosphere here or click to select';
               display: inline-block;
@@ -106,11 +107,6 @@
               text-shadow: 1px 1px #fff;
               font-weight: 700;
             }
-
-            .dropbox::-webkit-file-upload-button {
-              visibility: hidden;
-            }
-
 
             #loading {
               margin-top: 2em;
@@ -132,6 +128,7 @@
       <label>Select a photosphere by drag&amp;drop or clicking here.</label>
       <input type="file" accept="image/*" class="dropzone" id="spot_img">
     </div>
+    <p>No idea how to do this? <a href="howto.html">Learn how to make a Photo Sphere here</a>.</p>
 
     <h2>Featured spots</h2>
 
