@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
     <head>
-        <title>Spots - The digital teleporter</title>
+        <title>Teleports - The digital teleporter</title>
 
         <meta name=viewport content="width=device-width, initial-scale=1">
         <meta name="mobile-web-app-capable" content="yes">
@@ -148,8 +148,8 @@
     <a class="back" href="index.html">Back</a>
   </nav>
   <article>
-    <h1>Spots</h1>
-    <h2>New Spot</h2>
+    <h1>Teleports</h1>
+    <h2>Add a teleport</h2>
 
     <div class="dropcontainer">
       <div id="loading" style="display: none">
@@ -162,52 +162,52 @@
         <input type="file" name="file" accept="image/*" class="dropzone" id="spot_img">
         <input type="hidden" name="upload_preset" value="spots_form">
         <input type="hidden" id="callback" name="callback" value="http://spots.geekonaut.de">
-        <button type="submit">Yes, I want to publicly share this image</button>
+        <button type="submit" id="submit" style="display:none">Yes, I want to publicly share this image</button>
       </form>
     </div>
     <p>No idea how to do this? <a href="howto.html">Learn how to make a Photo Sphere here</a>.</p>
 
-    <h2>Featured spots</h2>
+    <h2>Featured teleports</h2>
 
     <div class="tile">
       <a href="#show=zurich_1">
         <img src="https://res.cloudinary.com/geekonaut/image/upload/c_thumb,h_250,w_250/spots/zurich_1.jpg" alt="Zurich, Platzspitz" title="Zurich, Platzspitz">
-        <div>Visit Zurich Platzspitz</div>
+        <div>Zurich Platzspitz</div>
       </div>
     </div>
 
     <div class="tile">
       <a href="#show=zurich_2">
         <img src="https://res.cloudinary.com/geekonaut/image/upload/c_thumb,h_250,w_250/spots/zurich_2.jpg" alt="Zurich, Rooftops" title="Zurich, Rooftops">
-        <div>Visit Zurich Rooftops</div>
+        <div>Zurich Rooftops</div>
       </a>
     </div>
 
     <div class="tile">
       <a href="#show=zurich_3">
         <img src="https://res.cloudinary.com/geekonaut/image/upload/c_thumb,h_250,w_250/spots/zurich_3.jpg" alt="Zurich, Main Station" title="Zurich, Main Station">
-        <div>Visit Zurich Main Station</div>
+        <div>Zurich Main Station</div>
       </a>
     </div>
 
     <div class="tile">
       <a href="#show=zurich_4">
         <img src="https://res.cloudinary.com/geekonaut/image/upload/c_thumb,h_250,w_250/spots/zurich_4.jpg" alt="Zurich, Schmiede Wiedikon" title="Zurich, Schmiede Wiedikon">
-        <div>Visit Zurich Schmiede Wiedikon</div>
+        <div>Zurich Schmiede Wiedikon</div>
       </a>
     </div>
 
     <div class="tile">
       <a href="#show=zurich_5">
         <img src="https://res.cloudinary.com/geekonaut/image/upload/c_thumb,h_250,w_250/spots/zurich_5.jpg" alt="Zurich, Uetliberg" title="Zurich, Uetliberg">
-        <div>Visit Zurich Uetliberg</div>
+        <div>Zurich Uetliberg</div>
       </a>
     </div>
 
     <div class="tile">
       <a href="#show=zurich_6">
         <img src="https://res.cloudinary.com/geekonaut/image/upload/c_thumb,h_250,w_250/spots/zurich_6.jpg" alt="Zurich, Liebfrauenkirche" title="Zurich, Liebfrauenkirche">
-        <div>Visit Zurich Liebfrauenkirche</div>
+        <div>Zurich Liebfrauenkirche</div>
       </a>
     </div>
 
@@ -255,7 +255,7 @@
           data-dismiss="modal">Close</a>
   </section>
 
-  <script src="js/ZeroClipboard.js"></script>
+  <script src="ZeroClipboard.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

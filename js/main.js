@@ -74,8 +74,7 @@ if(isWebGLAvailable) {
   effect = new VREffect(World.getRenderer());
   effect.setSize(window.innerWidth, window.innerHeight);
 
-  vrmgr = new WebVRManager(effect);
-
+  vrmgr = new WebVRManager(effect, {hideButton: true});
   cam = World.getCamera();
   controls = new VRControls(cam);
 
@@ -117,12 +116,14 @@ function stop(e) {
   document.querySelector("article").style.display = "block";
   document.querySelector("canvas").style.display = "none";
   document.getElementById("publish").style.display = "none";
+  vrmgr.hideButton = true;
   vrmgr.vrButton.style.display = "none";
   return false;
 }
 
 function handleUpload(e) {
-  document.getElementById("loading").style.display = "inline-block";
+  document.getElementById("submit").style.display = "inline-block";
+  document.getElementById("loading").style.display = "block";
   document.getElementById("publish").style.display = "inline";
 	e.stopPropagation();
 	e.preventDefault();
@@ -179,5 +180,6 @@ function start(img) {
   var startScreen = document.querySelector("article");
   startScreen.style.display = "none";
   document.querySelector("canvas").style.display = "block";
+  vrmgr.hideButton = false;
   vrmgr.vrButton.style.display = "block";
 }

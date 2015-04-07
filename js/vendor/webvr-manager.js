@@ -121,6 +121,10 @@ WebVRManager.prototype.createVRButton = function() {
   s.userSelect = 'none';
   s.webkitUserSelect = 'none';
   s.MozUserSelect = 'none';
+
+  if(this.hideButton) s.display = "none";
+  button.style = s;
+  window.button = button;
   // Prevent button from being dragged.
   button.draggable = false;
   button.addEventListener('dragstart', function(e) {
@@ -152,9 +156,11 @@ WebVRManager.prototype.setMode = function(mode) {
 
   // Hack for Safari Mac/iOS to force relayout (svg-specific issue)
   // http://goo.gl/hjgR6r
-  this.vrButton.style.display = 'inline-block';
-  this.vrButton.offsetHeight;
-  this.vrButton.style.display = 'block';
+  if(!this.hideButton) {
+    this.vrButton.style.display = 'inline-block';
+    this.vrButton.offsetHeight;
+    this.vrButton.style.display = 'block';
+  }
 };
 
 /**
