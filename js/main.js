@@ -32,13 +32,6 @@ var onRender = function() {
 // Allow cross-origin texture loading
 THREE.ImageUtils.crossOrigin = '';
 
-var textures = {
-  zurich_1: THREE.ImageUtils.loadTexture("https://res.cloudinary.com/geekonaut/image/upload/spots/zurich_1.jpg"),
-  zurich_2: THREE.ImageUtils.loadTexture("https://res.cloudinary.com/geekonaut/image/upload/spots/zurich_2.jpg"),
-  zurich_3: THREE.ImageUtils.loadTexture("https://res.cloudinary.com/geekonaut/image/upload/spots/zurich_3.jpg"),
-  zurich_4: THREE.ImageUtils.loadTexture("https://res.cloudinary.com/geekonaut/image/upload/spots/zurich_4.jpg")
-};
-
 var material = new THREE.MeshBasicMaterial({wireframe: false, side: THREE.BackSide}),
     skydome  = new THREE.Mesh(new THREE.SphereGeometry(100, 64, 64), material),
     cam      = null,
@@ -49,11 +42,13 @@ var material = new THREE.MeshBasicMaterial({wireframe: false, side: THREE.BackSi
 if(isWebGLAvailable) {
   window.addEventListener("hashchange", function() {
     if(window.location.hash.slice(1,5) == "show") {
+      document.getElementById("loading").style.display = "inline-block";
       start(window.location.hash.slice(6));
     }
   });
 
   if(window.location.hash.slice(1,5) == "show") {
+    document.getElementById("loading").style.display = "inline-block";
     start(window.location.hash.slice(6));
   }
 } else {
@@ -67,6 +62,18 @@ function handleDragHover(e) {
 	e.preventDefault();
 
 	e.target.className = (e.type == "dragover" ? "dropzone dropzone-hover" : "dropzone");
+}
+
+function stop(e) {
+  e.preventDefault();
+  e.stopPropagation();
+
+  var canvas = document.querySelector("canvas");
+  canvas.parentNode.removeChild(canvas);
+  document.querySelector(".back").style.display = "none";
+  document.querySelector("article").style.display = "block";
+
+  return false;
 }
 
 function handleUpload(e) {
@@ -89,14 +96,22 @@ function handleUpload(e) {
   }
 }
 
-dropzone.addEventListener("dragover", handleDragHover, false);
-dropzone.addEventListener("dragleave", handleDragHover, false);
-document.getElementById("spot_img").addEventListener("change", handleUpload, false);
+if(dropzone) {
+  dropzone.addEventListener("dragover", handleDragHover, false);
+  dropzone.addEventListener("dragleave", handleDragHover, false);
+}
+if(document.getElementById("spot_img")) {
+  document.getElementById("spot_img").addEventListener("change", handleUpload, false);
+}
+
+if(document.querySelector(".back")) {
+  document.querySelector(".back").addEventListener("click", stop, false);
+}
 
 function start(img) {
-  document.querySelector("a.back").style.display = "inline";
+  document.querySelector(".back").style.display = "inline";
 
-  if((typeof img) === "string") material.map = textures[img];
+  if((typeof img) === "string") material.map = THREE.ImageUtils.loadTexture("https://res.cloudinary.com/geekonaut/image/upload/spots/" + img + ".jpg");
   else {
     var tex = new THREE.Texture();
     tex.image = img;
@@ -126,5 +141,5 @@ function start(img) {
 
   document.getElementById("loading").style.display = "none";
   var startScreen = document.querySelector("article");
-  startScreen.parentNode.removeChild(startScreen);
+  startScreen.style.display = "none";
 }

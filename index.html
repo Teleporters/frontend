@@ -126,7 +126,11 @@
         Loading...
       </div>
       <label>Select a photosphere by drag&amp;drop or clicking here.</label>
-      <input type="file" accept="image/*" class="dropzone" id="spot_img">
+      <form action="https://api.cloudinary.com/v1_1/geekonaut/image/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" accept="image/*" class="dropzone" id="spot_img">
+        <input type="hidden" name="upload_preset" value="spots_form">
+        <button type="submit">Yes, I want to publicly share this image</button>
+      </form>
     </div>
     <p>No idea how to do this? <a href="howto.html">Learn how to make a Photo Sphere here</a>.</p>
 
@@ -160,6 +164,20 @@
       </a>
     </div>
 
+    <div class="tile">
+      <a href="#show=zurich_5">
+        <img src="https://res.cloudinary.com/geekonaut/image/upload/c_thumb,h_250,w_250/spots/zurich_5.jpg" alt="Zurich, Uetliberg" title="Zurich, Uetliberg">
+        <div>Visit Zurich Uetliberg</div>
+      </a>
+    </div>
+
+    <div class="tile">
+      <a href="#show=zurich_6">
+        <img src="https://res.cloudinary.com/geekonaut/image/upload/c_thumb,h_250,w_250/spots/zurich_6.jpg" alt="Zurich, Liebfrauenkirche" title="Zurich, Liebfrauenkirche">
+        <div>Visit Zurich Liebfrauenkirche</div>
+      </a>
+    </div>
+
   </article>
 
   <noscript>
@@ -169,6 +187,8 @@
         <li><a name="show=zurich_2" href="https://res.cloudinary.com/geekonaut/image/upload/spots/zurich_2.jpg">Zurich, Rooftops</a></li>
         <li><a name="show=zurich_3" href="https://res.cloudinary.com/geekonaut/image/upload/spots/zurich_3.jpg">Zurich, Main Station</a></li>
         <li><a name="show=zurich_4" href="https://res.cloudinary.com/geekonaut/image/upload/spots/zurich_4.jpg">Zurich, Schmiede Wiedikon</a></li>
+        <li><a name="show=zurich_5" href="https://res.cloudinary.com/geekonaut/image/upload/spots/zurich_4.jpg">Zurich, Uetliberg</a></li>
+        <li><a name="show=zurich_6" href="https://res.cloudinary.com/geekonaut/image/upload/spots/zurich_4.jpg">Zurich, Liebfrauenkirche</a></li>
       </ul>
     </article>
   </noscript>
@@ -180,6 +200,8 @@
         <li><a name="show=zurich_2" href="https://res.cloudinary.com/geekonaut/image/upload/spots/zurich_2.jpg">Zurich, Rooftops</a></li>
         <li><a name="show=zurich_3" href="https://res.cloudinary.com/geekonaut/image/upload/spots/zurich_3.jpg">Zurich, Main Station</a></li>
         <li><a name="show=zurich_4" href="https://res.cloudinary.com/geekonaut/image/upload/spots/zurich_4.jpg">Zurich, Schmiede Wiedikon</a></li>
+        <li><a name="show=zurich_5" href="https://res.cloudinary.com/geekonaut/image/upload/spots/zurich_4.jpg">Zurich, Uetliberg</a></li>
+        <li><a name="show=zurich_6" href="https://res.cloudinary.com/geekonaut/image/upload/spots/zurich_4.jpg">Zurich, Liebfrauenkirche</a></li>
       </ul>
     </article>
   </div>
