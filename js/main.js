@@ -117,7 +117,7 @@ function stop(e) {
   document.querySelector("article").style.display = "block";
   document.querySelector("canvas").style.display = "none";
   document.getElementById("publish").style.display = "none";
-
+  vrmgr.vrButton.style.display = "none";
   return false;
 }
 
@@ -179,4 +179,5 @@ function start(img) {
   var startScreen = document.querySelector("article");
   startScreen.style.display = "none";
   document.querySelector("canvas").style.display = "block";
+  vrmgr.vrButton.style.display = "block";
 }
