@@ -28,13 +28,18 @@
 
             .tile {
               width:   270px;
+              height:  270px;
               padding:  10px;
               display: inline-block;
 
               text-align: center;
             }
 
-            .back {
+            canvas {
+              display: none;
+            }
+
+            nav {
               position: absolute;
               top:   5px;
               right: 5px;
@@ -42,6 +47,29 @@
               background: rgb(0, 0, 0);
               background: rgba(0, 0, 0, 0.8);
               padding: 0.25em;
+              color: white;
+            }
+
+            nav a, nav a:visited {
+              color: white;
+            }
+
+            nav a:hover {
+              border-bottom: 2px solid white;
+            }
+
+            a {
+              display: inline-block;
+              padding: 4px;
+              transition: border 0.5s, background 0.5s, color 0.5s;
+              color: #0000ff;
+              box-sizing: border-box;
+            }
+
+            a:hover {
+              padding: 4px;
+              border: 2px solid #6699ff;
+              background: #003388;
               color: white;
             }
 
@@ -112,9 +140,13 @@
               margin-top: 2em;
             }
         </style>
+        <link rel="stylesheet" href="modal.css">
     </head>
 <body>
-  <a class="back" style="display: none" href="index.html">Back</a>
+  <nav style="display: none">
+    <button id="publish" style="display:none" type="button">Publish this</button>
+    <a class="back" href="index.html">Back</a>
+  </nav>
   <article>
     <h1>Spots</h1>
     <h2>New Spot</h2>
@@ -129,6 +161,7 @@
       <form action="https://api.cloudinary.com/v1_1/geekonaut/image/upload" method="post" enctype="multipart/form-data">
         <input type="file" name="file" accept="image/*" class="dropzone" id="spot_img">
         <input type="hidden" name="upload_preset" value="spots_form">
+        <input type="hidden" id="callback" name="callback" value="http://spots.geekonaut.de">
         <button type="submit">Yes, I want to publicly share this image</button>
       </form>
     </div>
@@ -206,6 +239,23 @@
     </article>
   </div>
 
+  <section class="modal--show" id="share" tabindex="-1" role="dialog" aria-labelledby="modal-label" aria-hidden="true">
+      <div class="modal-inner">
+          <header id="modal-label"><h2>Share your teleport</h2></header>
+          <div class="modal-content">
+            <p><strong>Yay!</strong> Your teleport was successfully uploaded and can now be shared using this link:</p>
+            <button id="copy_share_link" style="float: right; width: 90px;" type="button">Copy</button>
+            <div style="padding-right: 100px;">
+              <input id="share_link" style="display:inline-block; width: 100%;" onclick="this.select();">
+            </div>
+          </div>
+      </div>
+
+      <a href="#!" class="modal-close" title="Close this modal" data-close="Close"
+          data-dismiss="modal">Close</a>
+  </section>
+
+  <script src="js/ZeroClipboard.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

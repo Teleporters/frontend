@@ -39,7 +39,51 @@ var material = new THREE.MeshBasicMaterial({wireframe: false, side: THREE.BackSi
     vrmgr    = null,
     effect   = null;
 
+
+window.location.search.split("&").forEach(function(p) {
+  var parts = p.split("=");
+
+  if(parts[0] == "public_id") {
+    var slug = decodeURIComponent(parts[1]);
+    window.location.hash = "#show=" + slug.replace("spots/", "");
+    var shareLink = window.location.origin + window.location.pathname + "#show=" + slug.replace("spots/", "");
+    document.getElementById("share_link").value = shareLink;
+    window.sharing = true;
+
+    var clip = new ZeroClipboard(document.querySelectorAll("#copy_share_link"));
+
+    clip.addEventListener('mousedown',function() {
+    	clip.setText(shareLink);
+    });
+
+    clip.addEventListener('complete',function(client,text) {
+      document.getElementById('copy_share_link').disabled = true;
+      document.getElementById('copy_share_link').textContent = "Copied!";
+    });
+  }
+});
+
 if(isWebGLAvailable) {
+
+  World.init({
+    camDistance: 0,
+    renderCallback: onRender,
+    rendererOpts: {antialias: true}
+  });
+
+  effect = new VREffect(World.getRenderer());
+  effect.setSize(window.innerWidth, window.innerHeight);
+
+  vrmgr = new WebVRManager(effect);
+
+  cam = World.getCamera();
+  controls = new VRControls(cam);
+
+  skydome.position.copy(cam.position);
+
+  World.add(skydome);
+  World.start();
+
   window.addEventListener("hashchange", function() {
     if(window.location.hash.slice(1,5) == "show") {
       document.getElementById("loading").style.display = "inline-block";
@@ -50,6 +94,7 @@ if(isWebGLAvailable) {
   if(window.location.hash.slice(1,5) == "show") {
     document.getElementById("loading").style.display = "inline-block";
     start(window.location.hash.slice(6));
+    if(window.sharing) window.location.hash = "#share";
   }
 } else {
   document.getElementById("fallback").style.display = "block";
@@ -68,17 +113,17 @@ function stop(e) {
   e.preventDefault();
   e.stopPropagation();
 
-  var canvas = document.querySelector("canvas");
-  canvas.parentNode.removeChild(canvas);
-  document.querySelector(".back").style.display = "none";
+  document.querySelector("nav").style.display = "none";
   document.querySelector("article").style.display = "block";
+  document.querySelector("canvas").style.display = "none";
+  document.getElementById("publish").style.display = "none";
 
   return false;
 }
 
 function handleUpload(e) {
-//  document.getElementById("dropzone").style.display = "none";
   document.getElementById("loading").style.display = "inline-block";
+  document.getElementById("publish").style.display = "inline";
 	e.stopPropagation();
 	e.preventDefault();
 
@@ -108,10 +153,19 @@ if(document.querySelector(".back")) {
   document.querySelector(".back").addEventListener("click", stop, false);
 }
 
-function start(img) {
-  document.querySelector(".back").style.display = "inline";
+if(document.getElementById("publish")) {
+  document.getElementById("publish").addEventListener("click", function(e) {
+    if(document.getElementById("spot_img").files.length != 1) return;
+    document.forms[0].submit();
+  })
+}
 
-  if((typeof img) === "string") material.map = THREE.ImageUtils.loadTexture("https://res.cloudinary.com/geekonaut/image/upload/spots/" + img + ".jpg");
+document.getElementById("callback").value = window.location.href;
+
+function start(img) {
+  document.querySelector("nav").style.display = "inline";
+
+  if((typeof img) === "string") material.map = THREE.ImageUtils.loadTexture("https://res.cloudinary.com/geekonaut/image/upload/a_hflip/spots/" + img + ".jpg");
   else {
     var tex = new THREE.Texture();
     tex.image = img;
@@ -120,26 +174,9 @@ function start(img) {
     material.map = tex;
   }
   material.needsUpdate = true;
-  World.init({
-    camDistance: 0,
-    renderCallback: onRender,
-    rendererOpts: {antialias: true}
-  });
-
-  effect = new VREffect(World.getRenderer());
-  effect.setSize(window.innerWidth, window.innerHeight);
-
-  vrmgr = new WebVRManager(effect);
-
-  cam = World.getCamera();
-  controls = new VRControls(cam);
-
-  skydome.position.copy(cam.position);
-
-  World.add(skydome);
-  World.start();
 
   document.getElementById("loading").style.display = "none";
   var startScreen = document.querySelector("article");
   startScreen.style.display = "none";
+  document.querySelector("canvas").style.display = "block";
 }
