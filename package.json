@@ -1,6 +1,6 @@
 {
-  "name": "Spots3D",
-  "version": "1.0.2",
+  "name": "Teleports",
+  "version": "1.1.0",
   "description": "Some 3D scenes to look around with Cardboard",
   "main": "index.js",
   "scripts": {
