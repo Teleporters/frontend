@@ -38,7 +38,7 @@ html {
   height: 0;
   overflow: hidden;
   opacity: 0;
-  display: none\9; }
+  display: none; }
   .modal--fade:target, .modal--show:target, .is-active.modal--fade, .is-active.modal--show {
     -webkit-transform: translate(0, 0);
     -moz-transform: translate(0, 0);
@@ -49,11 +49,11 @@ html {
     height: auto;
     opacity: 1; }
   .is-active.modal--fade, .is-active.modal--show {
-    display: block\9;
-    height: 100% \9;
-    width: 100% \9; }
+    display: block;
+    height: 100% ;
+    width: 100% ; }
   .modal--fade:target, .modal--show:target, .is-active.modal--fade, .is-active.modal--show {
-    display: block\9; }
+    display: block; }
   .modal--fade .modal-inner, .modal--show .modal-inner {
     position: absolute;
     top: 60px;

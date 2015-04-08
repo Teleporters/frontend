@@ -5,6 +5,11 @@ var World = require('three-world'),
     VRControls = require('./vendor/VRControls'),
     WebVRPolyfill = require('./vendor/new-webvr-polyfill');
 
+var keen = new Keen({
+  projectId: "5524d0fe46f9a729f32a51ab",
+  writeKey: "4de50dbca92183ab6494f69b0376b8e68aa71611009f206ff921d962856cfcba43b101aa445f1769f44d5ef0eed55e24901fff2dbaf3b9457f82e2090227354ab40525a8630a2320dbd8b165d4ab8a08c53451d00b64663cfdd9d27e36d1c95e6352897d3a3002d41bccddf03c5836fb"
+});
+
 var isWebGLAvailable = (function() {
   try {
     var canvas = document.createElement("canvas");
@@ -23,6 +28,8 @@ var onRender = function() {
     controls.update();
     effect.render(World.getScene(), cam);
     return false;
+  } else if(vrmgr.mode === 1) { // incompatible to WebVR
+    controls.update();
   }
 
   return true;
@@ -42,11 +49,19 @@ var material = new THREE.MeshBasicMaterial({wireframe: false, side: THREE.BackSi
 window.location.search.split("&").forEach(function(p) {
   var parts = p.split("=");
 
-  if(parts[0] == "public_id") {
+  if(parts[0].replace("?", "") == "public_id") {
     var slug = decodeURIComponent(parts[1]);
     window.location.hash = "#show=" + slug.replace("spots/", "");
     var shareLink = window.location.origin + window.location.pathname + "#show=" + slug.replace("spots/", "");
     document.getElementById("share_link").value = shareLink;
+    var shareButtons = document.querySelectorAll(".st");
+    for(var i=0; i<shareButtons.length;i++) {
+      shareButtons[i].setAttribute("st_url", shareLink);
+      shareButtons[i].setAttribute("st_title", "Check out this teleport I made!");
+      shareButtons[i].setAttribute("st_summary", "Check out this teleport I made!");
+    };
+    stLight.options({publisher: "81197603-e22b-4944-9e98-d0fedc2573af", doNotHash: false, doNotCopy: false, hashAddressBar: false});
+
     window.sharing = true;
 
     var clip = new ZeroClipboard(document.querySelectorAll("#copy_share_link"));
@@ -59,10 +74,14 @@ window.location.search.split("&").forEach(function(p) {
       document.getElementById('copy_share_link').disabled = true;
       document.getElementById('copy_share_link').textContent = "Copied!";
     });
+
+    window.location.search = "";
   }
 });
 
 if(isWebGLAvailable) {
+  ga('set', 'dimension1', 'Yes');
+  keen.addEvent("webgl", {supported: 'Yes'});
 
   World.init({
     camDistance: 0,
@@ -94,7 +113,6 @@ if(isWebGLAvailable) {
     cam.rotation.x += turnX;
 
     e.preventDefault();
-    e.stopPropagation();
     return false;
   });
 
@@ -114,6 +132,8 @@ if(isWebGLAvailable) {
   }
 } else {
   document.getElementById("fallback").style.display = "block";
+  ga('set', 'dimension1', 'No');
+  keen.addEvent("webgl", {supported: 'No'});
 }
 
 var dropzone = document.getElementById("spot_img");
@@ -139,7 +159,7 @@ function stop(e) {
 }
 
 function handleUpload(e) {
-  document.getElementById("submit").style.display = "inline-block";
+  document.getElementById("submit_button").style.display = "inline-block";
   document.getElementById("loading").style.display = "block";
   document.getElementById("publish").style.display = "inline";
 	e.stopPropagation();
@@ -183,7 +203,7 @@ document.getElementById("callback").value = window.location.href;
 function start(img) {
   document.querySelector("nav").style.display = "inline";
 
-  if((typeof img) === "string") material.map = THREE.ImageUtils.loadTexture("https://res.cloudinary.com/geekonaut/image/upload/a_hflip/spots/" + img + ".jpg");
+  if((typeof img) === "string") material.map = THREE.ImageUtils.loadTexture("http://teleports.s3-website-eu-west-1.amazonaws.com/portals/" + img + ".jpg");
   else {
     var tex = new THREE.Texture();
     tex.image = img;
