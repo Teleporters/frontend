@@ -74,8 +74,6 @@ window.location.search.split("&").forEach(function(p) {
       document.getElementById('copy_share_link').disabled = true;
       document.getElementById('copy_share_link').textContent = "Copied!";
     });
-
-    window.location.search = "";
   }
 });
 
