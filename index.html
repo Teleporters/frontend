@@ -37,6 +37,7 @@
 
             canvas {
               display: none;
+              touch-action: none; /* Prevent pull-to-refresh */
             }
 
             nav {
@@ -256,6 +257,7 @@
   </section>
 
   <script src="ZeroClipboard.js"></script>
+  <script src="hammer.min.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

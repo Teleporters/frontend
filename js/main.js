@@ -19,9 +19,8 @@ new WebVRPolyfill();
 
 var onRender = function() {
 
-  controls.update();
-
   if (vrmgr.isVRMode()) {
+    controls.update();
     effect.render(World.getScene(), cam);
     return false;
   }
@@ -76,12 +75,30 @@ if(isWebGLAvailable) {
 
   vrmgr = new WebVRManager(effect, {hideButton: true});
   cam = World.getCamera();
+  cam.rotation.order = 'YXZ';
   controls = new VRControls(cam);
 
   skydome.position.copy(cam.position);
+  cam.rotation.set(0, 0, 0);
 
   World.add(skydome);
   World.start();
+
+  var hammertime = new Hammer(World.getRenderer().domElement, {});
+
+  hammertime.on('pan', function(e) {
+    var turnY = Math.PI * 0.01 * (e.deltaX / window.innerWidth),
+        turnX = Math.PI * 0.01 * (e.deltaY / window.innerHeight);
+
+    cam.rotation.y += turnY;
+    cam.rotation.x += turnX;
+
+    e.preventDefault();
+    e.stopPropagation();
+    return false;
+  });
+
+  World.getRenderer().domElement.addEventListener('touchstart', function(e) { e.preventDefault(); }, true);
 
   window.addEventListener("hashchange", function() {
     if(window.location.hash.slice(1,5) == "show") {
