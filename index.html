@@ -98,10 +98,6 @@
               text-align: center;
             }
 
-            .dropcontainer label {
-              visibility: hidden;
-            }
-
             .dropzone {
               display: block;
               cursor: pointer;
@@ -127,6 +123,8 @@
             .dropzone::-webkit-file-upload-button {
               display: none;
             }
+
+            input#spot_img { display: none; }
 
             .dropzone::before {
               position: relative;
@@ -169,9 +167,10 @@
         <br>
         Loading...
       </div>
-      <label>Select a photosphere by drag&amp;drop or clicking here.</label>
       <form action="http://uploads.teleports.me/spots" method="post" enctype="multipart/form-data">
-        <input type="file" name="file" accept="image/*" class="dropzone" id="spot_img">
+        <label class="dropzone">Select a photosphere by drag&amp;drop or clicking here.
+          <input type="file" name="file" accept="image/*" id="spot_img">
+        </label>
         <input type="hidden" name="upload_preset" value="spots_form">
         <input type="hidden" id="callback" name="callback" value="http://spots.geekonaut.de">
         <button type="submit" id="submit_button" style="display:none">Yes, I want to publicly share this image</button>
