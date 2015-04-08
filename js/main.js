@@ -147,8 +147,7 @@ function stop(e) {
   e.preventDefault();
   e.stopPropagation();
 
-  document.querySelector("nav").style.display = "none";
-  document.querySelector("article").style.display = "block";
+  document.querySelector("#mininav").style.display = "none";
   document.querySelector("canvas").style.display = "none";
   document.getElementById("publish").style.display = "none";
   vrmgr.hideButton = true;
@@ -196,10 +195,9 @@ if(document.getElementById("publish")) {
   })
 }
 
-document.getElementById("callback").value = window.location.href;
-
 function start(img) {
-  document.querySelector("nav").style.display = "inline";
+  document.querySelector("#mininav").style.display = "inline";
+  document.querySelector("canvas").style.display = "block";
 
   if((typeof img) === "string") material.map = THREE.ImageUtils.loadTexture("http://teleports.s3-website-eu-west-1.amazonaws.com/portals/" + img + ".jpg");
   else {
@@ -212,9 +210,6 @@ function start(img) {
   material.needsUpdate = true;
 
   document.getElementById("loading").style.display = "none";
-  var startScreen = document.querySelector("article");
-  startScreen.style.display = "none";
-  document.querySelector("canvas").style.display = "block";
   vrmgr.hideButton = false;
   vrmgr.vrButton.style.display = "block";
 }

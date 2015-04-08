@@ -1,301 +1,203 @@
-<!doctype html>
-<html>
-    <head>
-        <title>Teleports - The digital teleporter</title>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+Design by TEMPLATED
+http://templated.co
+Released for free under the Creative Commons Attribution License
 
-        <meta charset="utf-8">
-        <meta name=viewport content="width=device-width, initial-scale=1">
-        <meta name="mobile-web-app-capable" content="yes">
-        <meta name="apple-mobile-web-app-capable" content="yes">
+Name       : BarbedFlower
+Description: A two-column, fixed-width design with dark color scheme.
+Version    : 1.0
+Released   : 20140322
 
-        <link rel="icon" sizes="192x192" href="imgs/icon_192.png">
-        <link rel="icon" sizes="128x128" href="imgs/icon_128.png">
-        <link rel="apple-touch-icon" sizes="128x128" href="imgs/icon_128.png">
-        <link rel="apple-touch-icon-precomposed" sizes="128x128" href="imgs/icon_128.png">
-        <link rel="manifest" href="manifest.json">
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Teleports - 360° Virtual Reality</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="//fonts.googleapis.com/css?family=Varela" rel="stylesheet" />
+<link href="default.css" rel="stylesheet" type="text/css" media="all" />
+<link href="modal.css" rel="stylesheet" type="text/css" media="all" />
+<link href="fonts.css" rel="stylesheet" type="text/css" media="all" />
 
-        <meta property="og:title" content="Teleports.me" />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="http://teleports.me" />
-        <meta property="og:image" content="http://teleports.me/imgs/icon_192.png" />
-        <meta property="og:description" content="Teleports.me allows you to create and share a virtual reality location with your friends" />
-        <meta property="og:site_name" content="Teleports.me" />
+<meta name=viewport content="width=device-width, initial-scale=1">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
 
-        <style>
-            html, body, canvas {
-                margin: 0;
-                padding: 0;
-                width: 100%;
-                width: 100vw;
-                height: 100%;
-                height: 100vh;
+<link rel="icon" sizes="192x192" href="imgs/icon_192.png">
+<link rel="icon" sizes="128x128" href="imgs/icon_128.png">
+<link rel="apple-touch-icon" sizes="128x128" href="imgs/icon_128.png">
+<link rel="apple-touch-icon-precomposed" sizes="128x128" href="imgs/icon_128.png">
+<link rel="manifest" href="manifest.json">
 
-                text-align: center;
-                font-family: Helvetica, Arial, sans-serif;
-            }
+<meta property="og:title" content="Teleports.me" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://teleports.me" />
+<meta property="og:image" content="http://teleports.me/imgs/icon_192.png" />
+<meta property="og:description" content="Teleports.me allows you to create and share a virtual reality location with your friends" />
+<meta property="og:site_name" content="Teleports.me" />
 
-            .tile {
-              width:   270px;
-              height:  270px;
-              padding:  10px;
-              display: inline-block;
+<!--[if IE 6]><link href="default_ie6.css" rel="stylesheet" type="text/css" /><![endif]-->
 
-              text-align: center;
-            }
+<script type="text/javascript">
+  !function(a,b){a("Keen","https://d26b395fwzu5fz.cloudfront.net/3.2.4/keen.min.js",b)}(function(a,b,c){var d,e,f;c["_"+a]={},c[a]=function(b){c["_"+a].clients=c["_"+a].clients||{},c["_"+a].clients[b.projectId]=this,this._config=b},c[a].ready=function(b){c["_"+a].ready=c["_"+a].ready||[],c["_"+a].ready.push(b)},d=["addEvent","setGlobalProperties","trackExternalLink","on"];for(var g=0;g<d.length;g++){var h=d[g],i=function(a){return function(){return this["_"+a]=this["_"+a]||[],this["_"+a].push(arguments),this}};c[a].prototype[h]=i(h)}e=document.createElement("script"),e.async=!0,e.src=b,f=document.getElementsByTagName("script")[0],f.parentNode.insertBefore(e,f)},this);
+</script>
 
-            canvas {
-              display: none;
-              touch-action: none; /* Prevent pull-to-refresh */
-            }
-
-            nav {
-              position: absolute;
-              top:   5px;
-              right: 5px;
-
-              background: rgb(0, 0, 0);
-              background: rgba(0, 0, 0, 0.8);
-              padding: 0.25em;
-              color: white;
-            }
-
-            nav a, nav a:visited {
-              color: white;
-            }
-
-            nav a:hover {
-              border-bottom: 2px solid white;
-            }
-
-            a {
-              display: inline-block;
-              padding: 4px;
-              transition: border 0.5s, background 0.5s, color 0.5s;
-              color: #0000ff;
-              box-sizing: border-box;
-            }
-
-            a:hover {
-              padding: 4px;
-              border: 2px solid #6699ff;
-              background: #003388;
-              color: white;
-            }
-
-            .fallback {
-              height: 100%;
-              height: 100vh;
-              text-align: left;
-              line-height: 1.2em;
-            }
-
-            .fallback li {
-              padding: 0.5em 0;
-            }
-
-            .dropcontainer {
-              position: relative;
-              text-align: center;
-            }
-
-            .dropzone {
-              display: block;
-              cursor: pointer;
-              width: 80%;
-              height: 5em;
-              border: 2px dashed #888;
-              padding: 1em;
-              background: #ffc;
-              margin: 0 auto;
-              text-align: center;
-              box-sizing: border-box;
-            }
-
-            .dropzone-hover {
-              border: 4px dashed #0a0;
-              background: #afa;
-            }
-
-            .dropzone::shadow input {
-              display: none;
-            }
-
-            .dropzone::-webkit-file-upload-button {
-              display: none;
-            }
-
-            input#spot_img { display: none; }
-
-            .dropzone::before {
-              position: relative;
-              width: 100%;
-              text-align: center;
-              content: 'Drag a photosphere here or click to select';
-              display: inline-block;
-              padding: 0;
-              margin:  auto;
-              outline: none;
-              white-space: nowrap;
-              -webkit-user-select: none;
-              cursor: pointer;
-              color: #666;
-              text-shadow: 1px 1px #fff;
-              font-weight: 700;
-            }
-
-            #loading {
-              margin-top: 2em;
-            }
-        </style>
-        <link rel="stylesheet" href="modal.css">
-        <script type="text/javascript">
-          !function(a,b){a("Keen","https://d26b395fwzu5fz.cloudfront.net/3.2.4/keen.min.js",b)}(function(a,b,c){var d,e,f;c["_"+a]={},c[a]=function(b){c["_"+a].clients=c["_"+a].clients||{},c["_"+a].clients[b.projectId]=this,this._config=b},c[a].ready=function(b){c["_"+a].ready=c["_"+a].ready||[],c["_"+a].ready.push(b)},d=["addEvent","setGlobalProperties","trackExternalLink","on"];for(var g=0;g<d.length;g++){var h=d[g],i=function(a){return function(){return this["_"+a]=this["_"+a]||[],this["_"+a].push(arguments),this}};c[a].prototype[h]=i(h)}e=document.createElement("script"),e.async=!0,e.src=b,f=document.getElementsByTagName("script")[0],f.parentNode.insertBefore(e,f)},this);
-        </script>
-    </head>
+</head>
 <body>
-  <nav style="display: none">
-    <button id="publish" style="display:none" type="button">Publish this</button>
-    <a class="back" href="index.html">Back</a>
-  </nav>
-  <article>
-    <h1>Teleports</h1>
-    <h2>Add a teleport</h2>
+<div id="wrapper">
+	<div id="header-wrapper">
+	<div id="header" class="container">
+		<div id="logo">
+			<h1><a href="/">Teleports</a></h1>
+		</div>
+		<div id="menu">
+			<ul>
+				<li class="active"><a href="#" accesskey="1" title="Home">Home</a></li>
+				<li><a href="/gallery" accesskey="2" title="Browse Teleport Gallery">Gallery</a></li>
+				<li><a href="#create" accesskey="3" title="Create a Teleport">Add your teleport</a></li>
+				<li><a href="/map" accesskey="4" title="Map of Teleports">Map</a></li>
+				<li><a href="/tos" accesskey="5" title="Terms of Service">Terms of Service</a></li>
+				<li><a href="/imprint" accesskey="6" title="Imprint">Imprint</a></li>
+			</ul>
+		</div>
+	</div>
+	</div>
+	<div id="banner">
+		<div class="container">
+			<div class="title">
+				<h2>Be somewhere else</h2>
+				<span class="byline">See and share places in 360° Virtual Reality</span>
+			</div>
+			<ul class="actions">
+				<li><a href="#create" class="button">Create your own 360° Teleport</a></li>
+			</ul>
+		</div>
+	</div>
 
-    <div class="dropcontainer">
-      <div id="loading" style="display: none">
-        <img src="imgs/loading.gif" alt="Loading...">
-        <br>
-        Loading...
-      </div>
-      <form action="http://uploads.teleports.me/spots" method="post" enctype="multipart/form-data">
-        <label class="dropzone">Select a photosphere by drag&amp;drop or clicking here.
-          <input type="file" name="file" accept="image/*" id="spot_img">
-        </label>
-        <input type="hidden" name="upload_preset" value="spots_form">
-        <input type="hidden" id="callback" name="callback" value="http://spots.geekonaut.de">
-        <button type="submit" id="submit_button" style="display:none">Yes, I want to publicly share this image</button>
-      </form>
-    </div>
-    <p>No idea how to do this? <a href="howto.html">Learn how to make a Photo Sphere here</a>.</p>
 
-    <h2>Featured teleports</h2>
+	<div id="page" class="container">
 
-    <div class="tile">
-      <a href="#show=zurich_1_VytOGPRl">
-        <img src="http://teleports.s3-website-eu-west-1.amazonaws.com/thumbs/zurich_1_VytOGPRl.png" width="250" alt="Zurich, Platzspitz" title="Zurich, Platzspitz">
-        <span>Zurich Platzspitz</span>
-      </a>
-    </div>
-
-    <div class="tile">
-      <a href="#show=zurich_2_VkMpGPRe">
-        <img src="http://teleports.s3-website-eu-west-1.amazonaws.com/thumbs/zurich_2_VkMpGPRe.png" width="250" alt="Zurich, Rooftops" title="Zurich, Rooftops">
-        <span>Zurich Rooftops</span>
-      </a>
-    </div>
-
-    <div class="tile">
-      <a href="#show=zurich_3_N1cMXwAl">
-        <img src="http://teleports.s3-website-eu-west-1.amazonaws.com/thumbs/zurich_3_N1cMXwAl.png" width="250" alt="Zurich, Main Station" title="Zurich, Main Station">
-        <span>Zurich Main Station</span>
-      </a>
-    </div>
-
-    <div class="tile">
-      <a href="#show=zurich_4_EJB_XDAx">
-        <img src="http://teleports.s3-website-eu-west-1.amazonaws.com/thumbs/zurich_4_EJB_XDAx.png" width="250" alt="Zurich, Schmiede Wiedikon" title="Zurich, Schmiede Wiedikon">
-        <span>Zurich Schmiede Wiedikon</span>
-      </a>
-    </div>
-
-    <div class="tile">
-      <a href="#show=zurich_5_NyOiQv0x">
-        <img src="http://teleports.s3-website-eu-west-1.amazonaws.com/thumbs/zurich_5_NyOiQv0x.png" width="250" alt="Zurich, Uetliberg" title="Zurich, Uetliberg">
-        <span>Zurich Uetliberg</span>
-      </a>
-    </div>
-
-    <div class="tile">
-      <a href="#show=zurich_6_NypJVw0e">
-        <img src="http://teleports.s3-website-eu-west-1.amazonaws.com/thumbs/zurich_6_NypJVw0e.png" width="250" alt="Zurich, Liebfrauenkirche" title="Zurich, Liebfrauenkirche">
-        <span>Zurich Liebfrauenkirche</span>
-      </a>
-    </div>
-
-    <div class="tile">
-      <a href="#show=zurich_7_E1feHw0l">
-        <img src="http://teleports.s3-website-eu-west-1.amazonaws.com/thumbs/zurich_7_E1feHw0l.png" width="250" alt="Zurich, Central" title="Zurich, Central">
-        <span>Zurich Central</span>
-      </a>
-    </div>
-
-    <div class="tile">
-      <a href="#show=zurich_8_EyTPBD0g">
-        <img src="http://teleports.s3-website-eu-west-1.amazonaws.com/thumbs/zurich_8_EyTPBD0g.png" width="250" alt="Zurich, Polyterrasse" title="Zurich, Polyterrasse">
-        <span>Zurich Polyterrasse</span>
-      </a>
-    </div>
-
-  </article>
-
-  <div id="fallback" class="fallback">
-    <article>
-      <h2>Whoops!</h2>
-      <p>Your browser isn't ready for the best Transporters experience. But we've got you covered!</p>
-      <p>You can still see the images, but please <a href="https://get.webgl.org">consider getting a browser with WebGL, as described on this website.</a></p>
-      <ul>
-        <li id="show=zurich_1_VytOGPRl"><a href="http://teleports.s3-website-eu-west-1.amazonaws.com/thumbs/zurich_1_VytOGPRl.jpg">Zurich, Platzspitz</a></li>
-        <li id="show=zurich_2_VkMpGPRe"><a href="http://teleports.s3-website-eu-west-1.amazonaws.com/thumbs/zurich_2_VkMpGPRe.jpg">Zurich, Rooftops</a></li>
-        <li id="show=zurich_3_N1cMXwAl"><a href="http://teleports.s3-website-eu-west-1.amazonaws.com/thumbs/zurich_3_N1cMXwAl.jpg">Zurich, Main Station</a></li>
-        <li id="show=zurich_4_EJB_XDAx"><a href="http://teleports.s3-website-eu-west-1.amazonaws.com/thumbs/zurich_4_EJB_XDAx.jpg">Zurich, Schmiede Wiedikon</a></li>
-        <li id="show=zurich_5_NyOiQv0x"><a href="http://teleports.s3-website-eu-west-1.amazonaws.com/thumbs/zurich_5_NyOiQv0x.jpg">Zurich, Uetliberg</a></li>
-        <li id="show=zurich_6_NypJVw0e"><a href="http://teleports.s3-website-eu-west-1.amazonaws.com/thumbs/zurich_6_NypJVw0e.jpg">Zurich, Liebfrauenkirche</a></li>
-        <li id="show=zurich_7_E1feHw0l"><a href="http://teleports.s3-website-eu-west-1.amazonaws.com/thumbs/zurich_7_E1feHw0l.jpg">Zurich, Central</a></li>
-        <li id="show=zurich_8_EyTPBD0g"><a href="http://teleports.s3-website-eu-west-1.amazonaws.com/thumbs/zurich_8_EyTPBD0g.jpg">Zurich, Polyterrasse</a></li>
-      </ul>
-    </article>
-    <script>document.getElementById("fallback").style.display = "none";</script>
+<div class="title">
+	  <h2>Virtual Reality sightseeing made simple</h2>
+	  <span class="byline">Using your smartphone camera and Teleports</span>
+</div>
+		<p> Vivamus fermentum nibh in augue. Praesent a lacus at urna congue rutrum. Nulla enim eros nibh. Duis enim nulla, luctus eu, dapibus lacinia, venenatis id, quam. Vestibulum imperdiet, magna nec eleifend rutrum, nunc lectus vestibulum velit, euismod lacinia quam nisl id lorem. Quisque erat. Vestibulum pellentesque, justo mollis pretium suscipit, justo nulla blandit libero, in blandit augue justo quis nisl. Fusce mattis viverra elit. Fusce quis tortor.</p>
+		<ul class="actions">
+			<li><a href="#create" class="button">Create a Teleport</a></li>
+		</ul>
+		<p>Or <a href="/howto">click here to learn how to create a photo sphere</a> for a Teleport with your phone or tablet.</p>
   </div>
 
-  <section class="modal--show" id="share" tabindex="-1" role="dialog" aria-labelledby="modal-label" aria-hidden="true">
-      <div class="modal-inner">
-          <header id="modal-label"><h2>Share your teleport</h2></header>
-          <div class="modal-content">
-            <p><strong>Yay!</strong> Your teleport was successfully uploaded and can now be shared using this link:</p>
-            <button id="copy_share_link" style="float: right; width: 90px;" type="button">Copy</button>
-            <div style="padding-right: 100px;">
-              <input id="share_link" style="display:inline-block; width: 100%;" onclick="this.select();">
-            </div>
-            <p>
-              <span class='st_sharethis_large st' title='ShareThis'></span>
-              <span class='st_facebook_large st' title='Facebook'></span>
-              <span class='st_twitter_large st' title='Tweet'></span>
-              <span class='st_linkedin_large st' title='LinkedIn'></span>
-              <span class='st_reddit_large st' title='Reddit'></span>
-              <span class='st_tumblr_large st' title='Tumblr'></span>
-              <span class='st_pinterest_large st' title='Pinterest'></span>
-              <span class='st_email_large st' title='Email'></span>
-            </p>
-          </div>
-      </div>
+  <article class="featured">
+		<div class="container">
+			<div class="title">
+				<h2>Featured Teleports</h2>
+				<span class="byline">Try our featured Teleports</span> </div>
+				<!-- Marker -->
+				<div class="tile">
+					<a href="#show=zurich_1_VytOGPRl">
+						<img src="http://teleports.s3-website-eu-west-1.amazonaws.com/thumbs/zurich_1_VytOGPRl.png" width="250" alt="Zurich, Platzspitz" title="Zurich, Platzspitz">
+						<span>Zurich Platzspitz</span>
+					</a>
+				</div>
 
-      <a href="#!" class="modal-close" title="Close this modal" data-close="Close"
-          data-dismiss="modal">Close</a>
-  </section>
+				<div class="tile">
+					<a href="#show=zurich_2_VkMpGPRe">
+						<img src="http://teleports.s3-website-eu-west-1.amazonaws.com/thumbs/zurich_2_VkMpGPRe.png" width="250" alt="Zurich, Rooftops" title="Zurich, Rooftops">
+						<span>Zurich Rooftops</span>
+					</a>
+				</div>
 
-  <script src="ZeroClipboard.js"></script>
-  <script src="hammer.min.js"></script>
-  <script type="text/javascript">var switchTo5x=true;</script>
-  <script type="text/javascript" src="https://ws.sharethis.com/button/buttons.js"></script>
-  <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+				<div class="tile">
+					<a href="#show=zurich_3_N1cMXwAl">
+						<img src="http://teleports.s3-website-eu-west-1.amazonaws.com/thumbs/zurich_3_N1cMXwAl.png" width="250" alt="Zurich, Main Station" title="Zurich, Main Station">
+						<span>Zurich Main Station</span>
+					</a>
+				</div>
 
-    ga('create', 'UA-37093471-6', 'auto');
-  </script>
-  <script src="app.js"></script>
-  <script>ga('send', 'pageview');</script>
+				<div class="tile">
+					<a href="#show=zurich_4_EJB_XDAx">
+						<img src="http://teleports.s3-website-eu-west-1.amazonaws.com/thumbs/zurich_4_EJB_XDAx.png" width="250" alt="Zurich, Schmiede Wiedikon" title="Zurich, Schmiede Wiedikon">
+						<span>Zurich Schmiede Wiedikon</span>
+					</a>
+				</div>
+
+				<div class="tile">
+					<a href="#show=zurich_5_NyOiQv0x">
+						<img src="http://teleports.s3-website-eu-west-1.amazonaws.com/thumbs/zurich_5_NyOiQv0x.png" width="250" alt="Zurich, Uetliberg" title="Zurich, Uetliberg">
+						<span>Zurich Uetliberg</span>
+					</a>
+				</div>
+
+				<div class="tile">
+					<a href="#show=zurich_6_NypJVw0e">
+						<img src="http://teleports.s3-website-eu-west-1.amazonaws.com/thumbs/zurich_6_NypJVw0e.png" width="250" alt="Zurich, Liebfrauenkirche" title="Zurich, Liebfrauenkirche">
+						<span>Zurich Liebfrauenkirche</span>
+					</a>
+				</div>
+
+				<div class="tile">
+					<a href="#show=zurich_7_E1feHw0l">
+						<img src="http://teleports.s3-website-eu-west-1.amazonaws.com/thumbs/zurich_7_E1feHw0l.png" width="250" alt="Zurich, Central" title="Zurich, Central">
+						<span>Zurich Central</span>
+					</a>
+				</div>
+
+				<div class="tile">
+					<a href="#show=zurich_8_EyTPBD0g">
+						<img src="http://teleports.s3-website-eu-west-1.amazonaws.com/thumbs/zurich_8_EyTPBD0g.png" width="250" alt="Zurich, Polyterrasse" title="Zurich, Polyterrasse">
+						<span>Zurich Polyterrasse</span>
+					</a>
+				</div>
+				<!-- End Marker-->
+		</div>
+		<ul class="actions">
+			<li><a href="#create" class="button">Create your own Teleport</a></li>
+		</ul>
+	</div>
+
+</div>
+<div id="copyright" class="container">
+	<p>&copy; 2015 Geekonaut. All rights reserved. | Header photo by <a href="http://commons.wikimedia.org/wiki/User:Alex.vonbun" rel="nofollow">Alexander Vonbun</a>, CC-BY-SA 2.5 | Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a>.</p>
+</div>
+
+<img id="loading" src="imgs/loading.gif" style="display: none">
+<nav id="mininav">
+  <button id="publish" style="display:none" type="button">Publish this</button>
+  <a class="back" href="index.html">Back</a>
+</nav>
+
+<section class="modal--show" id="create" tabindex="-1" role="dialog" aria-labelledby="modal-label" aria-hidden="true">
+	<div class="modal-inner">
+		<header id="modal-label"><h2>Create a teleport</h2></header>
+		<div class="modal-content">
+			<p>Create a photo sphere (<a href="/howto">click here to learn how</a>) and upload it below:</p>
+			<form action="http://uploads.teleports.me/spots" method="post" enctype="multipart/form-data">
+				<label class="dropzone">Click or drag here to select a photo sphere
+					<input type="file" name="file" accept="image/*" id="spot_img">
+				</label>
+				<button type="submit" id="submit_button" style="display:none">Yes, I want to publicly share this image</button>
+			</form>
+		</div>
+	</div>
+
+	<a href="#!" class="modal-close" title="Close this modal" data-close="Close"
+	data-dismiss="modal">Close</a>
+</section>
+
+<script src="ZeroClipboard.js"></script>
+<script src="hammer.min.js"></script>
+<script type="text/javascript">var switchTo5x=true;</script>
+<script type="text/javascript" src="https://ws.sharethis.com/button/buttons.js"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-37093471-6', 'auto');
+</script>
+<script src="app.js"></script>
 </body>
 </html>
