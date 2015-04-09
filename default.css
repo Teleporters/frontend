@@ -196,6 +196,7 @@
 		padding: 0em 3em;
 		background: #163c8c;
 		border-radius: 7px;
+		border: none;
 		letter-spacing: 0.20em;
 		line-height: 4em;
 		text-decoration: none;
@@ -216,6 +217,10 @@
 		border-radius: 20px;
 		text-align: center;
 		color: #272925;
+	}
+
+	.button-confirm {
+		background-color: #458845;
 	}
 
 /*********************************************************************************/
@@ -285,20 +290,23 @@
 /* 2-column                                                                      */
 /*********************************************************************************/
 
+	.two-column {
+		margin: 0 auto;
+		display: table;
+		border-spacing: 20px;
+		border-collapse: separate;
+	}
+
 	.tbox1,
 	.tbox2
 	{
-		width: 575px;
+		display: table-cell;
 	}
 
-	.tbox1
-	{
-		float: left;
-	}
-
-	.tbox2
-	{
-		float: right;
+	@media screen and (max-device-width: 50em) {
+		.tbox1, .tbox2 {
+			display: table-row;
+		}
 	}
 
 	#wrapper
@@ -728,19 +736,22 @@
 
     #mininav {
       position: fixed;
-      top:   5px;
-      right: 5px;
+      top:   0;
+      right: 0;
+			left:  0;
 
-      height: 2em;
-      line-height: 2em;
+			width: 100%;
+      height: 3em;
+
+			box-sizing: border-box;
 
       background: rgb(0, 0, 0);
       background: rgba(0, 0, 0, 0.8);
       padding: 0.25em;
       color: white;
       z-index: 40;
-      font-size: 500%;
-      height: 2em;
+      font-size: 100%;
+			line-height: 3em;
     }
 
     #mininav a, #mininav a:visited {
@@ -755,6 +766,7 @@
     #mininav a, #mininav button {
     	font-size: 100%;
     	position: absolute;
+			line-height: 2.5em;
     }
 
     #mininav a:hover {
