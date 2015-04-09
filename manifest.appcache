@@ -18,11 +18,11 @@ https://res.cloudinary.com/geekonaut/image/upload/c_thumb,h_250,w_250/spots/zuri
 https://res.cloudinary.com/geekonaut/image/upload/c_thumb,h_250,w_250/spots/zurich_4.jpg
 
 # Icons
-imgs/icon_128.png
-imgs/icon_192.png
-imgs/icon_256.png
+images/icon_128.png
+images/icon_192.png
+images/icon_256.png
 
-imgs/loading.gif
+images/loading.gif
 
 # Meta
 manifest.json

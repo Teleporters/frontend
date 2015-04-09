@@ -22,20 +22,19 @@ Released   : 20140322
 <link href="fonts.css" rel="stylesheet" type="text/css" media="all" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.css" />
 
-<meta name=viewport content="width=device-width, initial-scale=1">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 
-<link rel="icon" sizes="192x192" href="imgs/icon_192.png">
-<link rel="icon" sizes="128x128" href="imgs/icon_128.png">
-<link rel="apple-touch-icon" sizes="128x128" href="imgs/icon_128.png">
-<link rel="apple-touch-icon-precomposed" sizes="128x128" href="imgs/icon_128.png">
+<link rel="icon" sizes="192x192" href="images/icon_192.png">
+<link rel="icon" sizes="128x128" href="images/icon_128.png">
+<link rel="apple-touch-icon" sizes="128x128" href="images/icon_128.png">
+<link rel="apple-touch-icon-precomposed" sizes="128x128" href="images/icon_128.png">
 <link rel="manifest" href="manifest.json">
 
 <meta property="og:title" content="Teleports.me" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="http://teleports.me" />
-<meta property="og:image" content="http://teleports.me/imgs/icon_192.png" />
+<meta property="og:image" content="http://teleports.me/images/icon_192.png" />
 <meta property="og:description" content="Teleports.me allows you to create and share a virtual reality location with your friends" />
 <meta property="og:site_name" content="Teleports.me" />
 
@@ -64,7 +63,7 @@ Released   : 20140322
 		<div id="menu">
 			<ul>
 				<li><a href="index.html" accesskey="1" title="Home">Home</a></li>
-				<li><a href="/gallery" accesskey="2" title="Browse Teleport Gallery">Gallery</a></li>
+				<!--li><a href="/gallery" accesskey="2" title="Browse Teleport Gallery">Gallery</a></li-->
 				<li><a href="index.html#create" accesskey="3" title="Create a Teleport">Add your teleport</a></li>
 				<li><a href="/map" accesskey="4" title="Map of Teleports">Map</a></li>
 				<li class="active"><a href="/howto" accesskey="5" title="See how to create your own 360° Teleport">Howto</a></li>
@@ -102,7 +101,7 @@ Released   : 20140322
           marker.bindPopup("<a href=\"http://teleports.me/#show=" + teleports[i].file + "\">Click here to see this Teleport</a>");
         }
     };
-    xhr.open('get', 'http://uploads.teleports.me/spots', false);
+    xhr.open('get', 'http://api.teleports.me/spots', false);
     xhr.send();
 
 </script>

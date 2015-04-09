@@ -25,16 +25,16 @@ Released   : 20140322
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 
-<link rel="icon" sizes="192x192" href="imgs/icon_192.png">
-<link rel="icon" sizes="128x128" href="imgs/icon_128.png">
-<link rel="apple-touch-icon" sizes="128x128" href="imgs/icon_128.png">
-<link rel="apple-touch-icon-precomposed" sizes="128x128" href="imgs/icon_128.png">
+<link rel="icon" sizes="192x192" href="images/icon_192.png">
+<link rel="icon" sizes="128x128" href="images/icon_128.png">
+<link rel="apple-touch-icon" sizes="128x128" href="images/icon_128.png">
+<link rel="apple-touch-icon-precomposed" sizes="128x128" href="images/icon_128.png">
 <link rel="manifest" href="manifest.json">
 
 <meta property="og:title" content="Teleports.me" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="http://teleports.me" />
-<meta property="og:image" content="http://teleports.me/imgs/icon_192.png" />
+<meta property="og:image" content="http://teleports.me/images/icon_192.png" />
 <meta property="og:description" content="Teleports.me allows you to create and share a virtual reality location with your friends" />
 <meta property="og:site_name" content="Teleports.me" />
 
@@ -55,7 +55,7 @@ Released   : 20140322
 		<div id="menu">
 			<ul>
 				<li class="active"><a href="index.html" accesskey="1" title="Home">Home</a></li>
-				<li><a href="/gallery" accesskey="2" title="Browse Teleport Gallery">Gallery</a></li>
+				<!--li><a href="/gallery" accesskey="2" title="Browse Teleport Gallery">Gallery</a></li-->
 				<li><a href="#create" accesskey="3" title="Create a Teleport">Add your teleport</a></li>
 				<li><a href="map.html" accesskey="4" title="Map of Teleports">Map</a></li>
 				<li><a href="howto.html" accesskey="5" title="See how to create your own 360° Teleport">Howto</a></li>
@@ -71,7 +71,7 @@ Released   : 20140322
 				<span class="byline">See and share places in 360° Virtual Reality</span>
 			</div>
 			<ul class="actions">
-				<li><a href="#create" class="button">Create your own 360° Teleport</a></li>
+				<li><a href="#create" class="button">Create your own Teleport</a></li>
 			</ul>
 		</div>
 	</div>
@@ -217,14 +217,15 @@ Released   : 20140322
 		<p>
 			&copy; 2015 Geekonaut. All rights reserved. | Header photo by <a href="http://commons.wikimedia.org/wiki/User:Alex.vonbun" rel="nofollow">Alexander Vonbun</a>, CC-BY-SA 2.5 | Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a>.
 			<br>
-			<a href="/tos">Terms of service</a> &nbsp; | &nbsp;
+			<a href="/terms">Terms of service</a> &nbsp; | &nbsp;
+			<a href="/privacy">Privacy policy</a> &nbsp; | &nbsp;
 			<a href="/imprint">Imprint</a>
 		</p>
 
 	</div>
 </footer>
 
-<img id="loading" src="imgs/loading.gif" style="display: none">
+<img id="loading" src="images/loading.gif" style="display: none">
 <nav id="mininav" style="display:none">
   <button id="publish" style="display:none" type="button">Publish this</button>
   <a class="back" href="index.html">Back</a>
@@ -243,6 +244,9 @@ Released   : 20140322
 				  <div id="upload_loading"></div>
   				<img id="preview" height="100">
 				</div>
+
+				<p>By pressing "submit" You agree to <a href="terms.html" target="_blank">Terms</a> and <a href="privacy.html">our privacy policy</a>.</p>
+
 				<button type="submit" id="submit_button" style="display:none">Yes, I want to publicly share this image</button>
 			</form>
 		</div>

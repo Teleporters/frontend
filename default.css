@@ -47,7 +47,9 @@
 		text-align: center;
 	}
 
-	.actions li {}
+	.actions li {
+		padding: 0 2em;
+	}
 
 	p
 	{
@@ -72,7 +74,7 @@
 	{
 		overflow: hidden;
 		margin: 0em auto;
-		width: 1000px;
+		width: 100%;
 	}
 
 /*********************************************************************************/
@@ -331,6 +333,13 @@
 		left: 0;
 	}
 
+	@media screen and (max-device-width: 50em) {
+		#logo {
+			position: relative;
+			display: block;
+		}
+	}
+
 	#logo h1
 	{
 		color: black;
@@ -392,6 +401,38 @@
 	#menu .icon
 	{
 	}
+
+	@media screen and (max-device-width: 50em) {
+		#menu {
+			position: relative;
+			width: 100%;
+		}
+
+		#menu ul {
+			display: block;
+		}
+
+		#menu li
+		{
+			float: none;
+			display: block;
+			text-align: center;
+			border-bottom: 1px solid #163c8c;
+			padding: 1em 0;
+		}
+
+		#menu li.active {
+			border-bottom: none;
+			padding: 0;
+		}
+
+  	#menu li:hover a, #menu li.active a, #menu li.active span {
+			border-radius: 0;
+			display: block;
+			border-bottom: none;
+		}
+	}
+
 
 /*********************************************************************************/
 /* Banner                                                                        */
@@ -600,7 +641,7 @@
 
 	.tile span {
 		position: absolute;
-		top:    230px;
+		top:    220px;
 		bottom:   0;
 		left:     0;
 
@@ -689,14 +730,31 @@
       position: fixed;
       top:   5px;
       right: 5px;
+
+      height: 2em;
+      line-height: 2em;
+
       background: rgb(0, 0, 0);
       background: rgba(0, 0, 0, 0.8);
       padding: 0.25em;
       color: white;
       z-index: 40;
+      font-size: 500%;
+      height: 2em;
     }
+
     #mininav a, #mininav a:visited {
       color: white;
+      right: 5px;
+    }
+
+    #mininav button {
+    	left: 5px;
+    }
+
+    #mininav a, #mininav button {
+    	font-size: 100%;
+    	position: absolute;
     }
 
     #mininav a:hover {
