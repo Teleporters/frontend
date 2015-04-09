@@ -1,58 +1,110 @@
-<!doctype html>
-<html>
-    <head>
-        <title>Teleports - The digital teleporter</title>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+Design by TEMPLATED
+http://templated.co
+Released for free under the Creative Commons Attribution License
 
-        <meta charset="utf-8">
-        <meta name=viewport content="width=device-width, initial-scale=1">
-        <meta name="mobile-web-app-capable" content="yes">
-        <meta name="apple-mobile-web-app-capable" content="yes">
+Name       : BarbedFlower
+Description: A two-column, fixed-width design with dark color scheme.
+Version    : 1.0
+Released   : 20140322
 
-        <link rel="icon" sizes="192x192" href="imgs/icon_192.png">
-        <link rel="icon" sizes="128x128" href="imgs/icon_128.png">
-        <link rel="apple-touch-icon" sizes="128x128" href="imgs/icon_128.png">
-        <link rel="apple-touch-icon-precomposed" sizes="128x128" href="imgs/icon_128.png">
-        <link rel="manifest" href="manifest.json">
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Teleports - 360° Virtual Reality</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="//fonts.googleapis.com/css?family=Varela" rel="stylesheet" />
+<link href="default.css" rel="stylesheet" type="text/css" media="all" />
+<link href="modal.css" rel="stylesheet" type="text/css" media="all" />
+<link href="fonts.css" rel="stylesheet" type="text/css" media="all" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.css" />
 
-        <meta property="og:title" content="Teleports.me" />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="http://teleports.me" />
-        <meta property="og:image" content="http://teleports.me/imgs/icon_192.png" />
-        <meta property="og:description" content="Teleports.me allows you to create and share a virtual reality location with your friends" />
-        <meta property="og:site_name" content="Teleports.me" />
+<meta name=viewport content="width=device-width, initial-scale=1">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
 
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.css" />
-        <style>
-            #map {
-                height: 100%;
-                height: 100vh;
-            }
-        </style>
-    </head>
-    <body>
+<link rel="icon" sizes="192x192" href="imgs/icon_192.png">
+<link rel="icon" sizes="128x128" href="imgs/icon_128.png">
+<link rel="apple-touch-icon" sizes="128x128" href="imgs/icon_128.png">
+<link rel="apple-touch-icon-precomposed" sizes="128x128" href="imgs/icon_128.png">
+<link rel="manifest" href="manifest.json">
+
+<meta property="og:title" content="Teleports.me" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://teleports.me" />
+<meta property="og:image" content="http://teleports.me/imgs/icon_192.png" />
+<meta property="og:description" content="Teleports.me allows you to create and share a virtual reality location with your friends" />
+<meta property="og:site_name" content="Teleports.me" />
+
+<!--[if IE 6]><link href="default_ie6.css" rel="stylesheet" type="text/css" /><![endif]-->
+
+<script type="text/javascript">
+  !function(a,b){a("Keen","https://d26b395fwzu5fz.cloudfront.net/3.2.4/keen.min.js",b)}(function(a,b,c){var d,e,f;c["_"+a]={},c[a]=function(b){c["_"+a].clients=c["_"+a].clients||{},c["_"+a].clients[b.projectId]=this,this._config=b},c[a].ready=function(b){c["_"+a].ready=c["_"+a].ready||[],c["_"+a].ready.push(b)},d=["addEvent","setGlobalProperties","trackExternalLink","on"];for(var g=0;g<d.length;g++){var h=d[g],i=function(a){return function(){return this["_"+a]=this["_"+a]||[],this["_"+a].push(arguments),this}};c[a].prototype[h]=i(h)}e=document.createElement("script"),e.async=!0,e.src=b,f=document.getElementsByTagName("script")[0],f.parentNode.insertBefore(e,f)},this);
+</script>
+
+<style>
+    #map {
+        width: 100%;
+        height: 100%;
+        height: 100vh;
+    }
+</style>
+
+</head>
+<body>
+<div id="wrapper" id="home">
+	<div id="header-wrapper">
+	<div id="header" class="container">
+		<div id="logo">
+			<h1><a href="/">Teleports</a></h1>
+		</div>
+		<div id="menu">
+			<ul>
+				<li><a href="index.html" accesskey="1" title="Home">Home</a></li>
+				<li><a href="/gallery" accesskey="2" title="Browse Teleport Gallery">Gallery</a></li>
+				<li><a href="index.html#create" accesskey="3" title="Create a Teleport">Add your teleport</a></li>
+				<li><a href="/map" accesskey="4" title="Map of Teleports">Map</a></li>
+				<li class="active"><a href="/howto" accesskey="5" title="See how to create your own 360° Teleport">Howto</a></li>
+				<li><a href="index.html#business" accesskey="6" title="Get us to create a Teleport for you">For Business</a></li>
+			</ul>
+		</div>
+	</div>
+	</div>
+
+    <article id="page" class="container">
+		<div class="title">
+			  <h2>How to create your own 360° Teleport</h2>
+			  <span class="byline">Share places from your smartphone or tablet</span>
+		</div>
+
         <div id="map"></div>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js"></script>
-        <script>
-            var map = L.map('map').setView([47.367347, 8.5500025], 2);
+    </article
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js"></script>
+<script>
+    var map = L.map('map').setView([47.367347, 8.5500025], 2);
 
-            L.tileLayer('https://{s}.tiles.mapbox.com/v4/teleports.lm7m9iek/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoidGVsZXBvcnRzIiwiYSI6IjEwd1NOaDQifQ.CgyC_tRLY2dYpoPpk-nklg', {
-                attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-                maxZoom: 18
-            }).addTo(map);
+    L.tileLayer('https://{s}.tiles.mapbox.com/v4/teleports.lm7m9iek/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoidGVsZXBvcnRzIiwiYSI6IjEwd1NOaDQifQ.CgyC_tRLY2dYpoPpk-nklg', {
+        attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+        maxZoom: 18
+    }).addTo(map);
 
-            var xhr = new XMLHttpRequest();
-            xhr.onload = function() {
-                var teleports = JSON.parse(this.responseText);
-                for(var i=0; i<teleports.length; i++) {
-                  if(teleports[i].lat === null) continue;
+    var xhr = new XMLHttpRequest();
+    xhr.onload = function() {
+        var teleports = JSON.parse(this.responseText);
+        for(var i=0; i<teleports.length; i++) {
+          if(teleports[i].lat === null) continue;
 
-                  var marker = L.marker([teleports[i].lat, teleports[i].lng]).addTo(map);
-                  marker.bindPopup("<a href=\"http://teleports.me/#show=" + teleports[i].file + "\">Click here to see this Teleport</a>");
-                }
-            };
-            xhr.open('get', 'http://uploads.teleports.me/spots', false);
-            xhr.send();
+          var marker = L.marker([teleports[i].lat, teleports[i].lng]).addTo(map);
+          marker.bindPopup("<a href=\"http://teleports.me/#show=" + teleports[i].file + "\">Click here to see this Teleport</a>");
+        }
+    };
+    xhr.open('get', 'http://uploads.teleports.me/spots', false);
+    xhr.send();
 
-        </script>
-    </body>
+</script>
+</body>
 </html>

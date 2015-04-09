@@ -46,7 +46,7 @@ Released   : 20140322
 
 </head>
 <body>
-<div id="wrapper">
+<div id="wrapper" id="home">
 	<div id="header-wrapper">
 	<div id="header" class="container">
 		<div id="logo">
@@ -54,12 +54,12 @@ Released   : 20140322
 		</div>
 		<div id="menu">
 			<ul>
-				<li class="active"><a href="#" accesskey="1" title="Home">Home</a></li>
+				<li class="active"><a href="index.html" accesskey="1" title="Home">Home</a></li>
 				<li><a href="/gallery" accesskey="2" title="Browse Teleport Gallery">Gallery</a></li>
 				<li><a href="#create" accesskey="3" title="Create a Teleport">Add your teleport</a></li>
-				<li><a href="/map" accesskey="4" title="Map of Teleports">Map</a></li>
-				<li><a href="/tos" accesskey="5" title="Terms of Service">Terms of Service</a></li>
-				<li><a href="/imprint" accesskey="6" title="Imprint">Imprint</a></li>
+				<li><a href="map.html" accesskey="4" title="Map of Teleports">Map</a></li>
+				<li><a href="howto.html" accesskey="5" title="See how to create your own 360° Teleport">Howto</a></li>
+				<li><a href="#business" accesskey="6" title="Get us to create a Teleport for you">For Business</a></li>
 			</ul>
 		</div>
 	</div>
@@ -79,11 +79,22 @@ Released   : 20140322
 
 	<div id="page" class="container">
 
-<div class="title">
-	  <h2>Virtual Reality sightseeing made simple</h2>
-	  <span class="byline">Using your smartphone camera and Teleports</span>
-</div>
-		<p> Vivamus fermentum nibh in augue. Praesent a lacus at urna congue rutrum. Nulla enim eros nibh. Duis enim nulla, luctus eu, dapibus lacinia, venenatis id, quam. Vestibulum imperdiet, magna nec eleifend rutrum, nunc lectus vestibulum velit, euismod lacinia quam nisl id lorem. Quisque erat. Vestibulum pellentesque, justo mollis pretium suscipit, justo nulla blandit libero, in blandit augue justo quis nisl. Fusce mattis viverra elit. Fusce quis tortor.</p>
+		<div class="title">
+			  <h2>Virtual Reality sightseeing made simple</h2>
+			  <span class="byline">Using your smartphone camera and Teleports</span>
+		</div>
+
+		<p>Have you ever been to a wonderful place and wanted to share it with people who weren't with you?</p>
+		<p>
+			No matter if it was the perfect vacation on a tropical island or the summit of a mountain you've just climbed -
+			pictures often can't really capture the moment.
+		</p>
+
+		<p>
+			But thanks to affordable Virtual Reality hardware and smartphones or tablets, you now have a better way!
+			Just <a href="/howto">take a photo sphere image</a> with your device, <a href="#create">upload it</a> to Teleports.me
+			and share it with those who matter to you - family, friends or others.
+		</p>
 		<ul class="actions">
 			<li><a href="#create" class="button">Create a Teleport</a></li>
 		</ul>
@@ -158,13 +169,63 @@ Released   : 20140322
 		</ul>
 	</div>
 
+	<div id="business" class="container">
+		<div class="title">
+			<h2>Teleports for business</h2>
+			<span class="byline">Virtual visits for your guests and customers</span> </div>
+		<div class="three-column">
+			<div class="boxA box">
+				<p>Be proactive, transparent and outstanding with 360° Teleports of your venue</p>
+				<ul class="bullets">
+					<li>Guests get a better impression of your location and rooms</li>
+					<li>A "What you see is what you get" benefit for your customers</li>
+					<li>Stronger visual and emotional bond boosts sales and coversion rates</li>
+				</ul>
+			</div>
+			<div class="boxB box">
+				<p>Our on site team helps you create professional, high-quality content</p>
+				<ul class="bullets">
+					<li>Professional equipment</li>
+					<li>Location scouting and advice</li>
+					<li>Post production</li>
+				</ul>
+			</div>
+			<div class="boxC box">
+				<p>Book us now and have us take care of your 360° Teleport</p>
+				<p>Send us your inquiry for a free consulting session, book an on site session starting at $500</p>
+			</div>
+		</div>
+
+		<div class="actions box">
+			<h3 style="margin-bottom: 2em">Send your free, non-binding inquiry</h3>
+			<form id="inquiry_form" action="http://api.teleports.me/inquiry" method="post">
+				<label for="email">Your email address:
+					<input type="email" name="email" required>
+				</label>
+				<div>
+					<button type="submit" class="button" style="margin: 0" id="inquiry_submit">Send inquiry</button>
+					<div class="notification" id="inquiry_result"></div>
+				</div>
+			</form>
+		</div>
+	</div>
+
+
 </div>
-<div id="copyright" class="container">
-	<p>&copy; 2015 Geekonaut. All rights reserved. | Header photo by <a href="http://commons.wikimedia.org/wiki/User:Alex.vonbun" rel="nofollow">Alexander Vonbun</a>, CC-BY-SA 2.5 | Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a>.</p>
-</div>
+<footer>
+	<div id="copyright" class="container">
+		<p>
+			&copy; 2015 Geekonaut. All rights reserved. | Header photo by <a href="http://commons.wikimedia.org/wiki/User:Alex.vonbun" rel="nofollow">Alexander Vonbun</a>, CC-BY-SA 2.5 | Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a>.
+			<br>
+			<a href="/tos">Terms of service</a> &nbsp; | &nbsp;
+			<a href="/imprint">Imprint</a>
+		</p>
+
+	</div>
+</footer>
 
 <img id="loading" src="imgs/loading.gif" style="display: none">
-<nav id="mininav">
+<nav id="mininav" style="display:none">
   <button id="publish" style="display:none" type="button">Publish this</button>
   <a class="back" href="index.html">Back</a>
 </nav>
@@ -174,7 +235,7 @@ Released   : 20140322
 		<header id="modal-label"><h2>Create a teleport</h2></header>
 		<div class="modal-content">
 			<p>Create a photo sphere (<a href="/howto">click here to learn how</a>) and upload it below:</p>
-			<form action="http://uploads.teleports.me/spots" method="post" enctype="multipart/form-data">
+			<form id="upload_form" action="http://api.teleports.me/spots" method="post" enctype="multipart/form-data">
 				<label class="dropzone">Click or drag here to select a photo sphere
 					<input type="file" name="file" accept="image/*" id="spot_img">
 				</label>

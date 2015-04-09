@@ -7,7 +7,7 @@
 	{
 		margin: 0px;
 		padding: 0px;
-		background: #333333;
+		background: white;
 		font-family: 'Varela', sans-serif;
 		font-size: 11pt;
 		font-weight: 300;
@@ -34,14 +34,20 @@
 		list-style: none;
 	}
 
-	ul.actions
+	ul.bullets {
+		list-style-type: square;
+		text-align: left;
+	}
+	ul.bullets li {
+		margin-bottom: 1em;
+	}
+
+	.actions
 	{
 		text-align: center;
 	}
 
-		ul.actions li
-		{
-		}
+	.actions li {}
 
 	p
 	{
@@ -260,23 +266,17 @@
 /* 3-column                                                                      */
 /*********************************************************************************/
 
+	.three-column {
+		display: table;
+		border-spacing: 20px;
+		border-collapse: separate;
+	}
+
 	.boxA,
 	.boxB,
 	.boxC
 	{
-		width: 320px;
-	}
-
-	.boxA,
-	.boxB
-	{
-		float: left;
-		margin-right: 20px;
-	}
-
-	.boxC
-	{
-		float: right;
+		display: table-cell;
 	}
 
 /*********************************************************************************/
@@ -474,8 +474,9 @@
 /* Footer                                                                        */
 /*********************************************************************************/
 
-	#footer
+	footer
 	{
+		background: #333333;
 	}
 
 /*********************************************************************************/
@@ -557,23 +558,23 @@
 }
 
 
-	#extra
+	#business
 	{
 		overflow: hidden;
 		padding: 5em 0em;
 	}
 
-	#extra .title
+	#business .title
 	{
 		text-align: center;
 	}
 
-	#extra .button
+	#business .button
 	{
 		margin-top: 5em;
 	}
 
-	#extra .fa
+	#business .fa
 	{
 		display: block;
 		margin-bottom: 0.5em;
@@ -649,6 +650,27 @@
 	.modal-content div { margin: 0.5em; }
 
 	/*********************************************************************************/
+	/* notifications                                                                 */
+	/*********************************************************************************/
+
+	.notification {
+		display: inline-block;
+		padding: 2em;
+	}
+
+	.success {
+		background-color: #afa;
+		color: #800;
+		border: 1px solid green;
+	}
+
+	.error {
+		background-color: #faa;
+		color: #f00;
+		border: 1px solid red;
+	}
+
+	/*********************************************************************************/
 	/* Rendering                                                                     */
 	/*********************************************************************************/
 
@@ -664,7 +686,7 @@
 	}
 
     #mininav {
-      position: absolute;
+      position: fixed;
       top:   5px;
       right: 5px;
       background: rgb(0, 0, 0);

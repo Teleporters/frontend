@@ -45,6 +45,9 @@ var material = new THREE.MeshBasicMaterial({wireframe: false, side: THREE.BackSi
     vrmgr    = null,
     effect   = null;
 
+//
+// Querystring handling
+//
 
 window.location.search.split("&").forEach(function(p) {
   var parts = p.split("=");
@@ -76,6 +79,8 @@ window.location.search.split("&").forEach(function(p) {
     });
   }
 });
+
+// WebGL init & all related setup
 
 if(isWebGLAvailable) {
   ga('set', 'dimension1', 'Yes');
@@ -136,6 +141,10 @@ if(isWebGLAvailable) {
   keen.addEvent("webgl", {supported: 'No'});
 }
 
+//
+// Drag & Drop
+//
+
 var dropzone = document.getElementById("spot_img");
 
 function handleDragHover(e) {
@@ -145,17 +154,9 @@ function handleDragHover(e) {
 	e.target.className = (e.type == "dragover" ? "dropzone dropzone-hover" : "dropzone");
 }
 
-function stop(e) {
-  e.preventDefault();
-  e.stopPropagation();
-
-  document.querySelector("#mininav").style.display = "none";
-  document.querySelector("canvas").style.display = "none";
-  document.getElementById("publish").style.display = "none";
-  vrmgr.hideButton = true;
-  vrmgr.vrButton.style.display = "none";
-  return false;
-}
+//
+// Uploads
+//
 
 function handleUpload(e) {
   document.getElementById("submit_button").style.display = "inline-block";
@@ -181,6 +182,10 @@ function handleUpload(e) {
   }, 100);
 }
 
+//
+// Event handlers
+//
+
 if(dropzone) {
   dropzone.addEventListener("dragover", handleDragHover, false);
   dropzone.addEventListener("dragleave", handleDragHover, false);
@@ -196,9 +201,55 @@ if(document.querySelector(".back")) {
 if(document.getElementById("publish")) {
   document.getElementById("publish").addEventListener("click", function(e) {
     if(document.getElementById("spot_img").files.length != 1) return;
-    document.forms[0].submit();
+    document.getElementById("upload_form").submit();
   })
 }
+
+document.getElementById("inquiry_submit").addEventListener("click", function(e) {
+  e.preventDefault();
+
+  var email = document.querySelector("input[name='email']").value;
+  if(email == "" || email.indexOf("@") === false) {
+    alert("Please enter your email address");
+  }
+
+  var xhr = new XMLHttpRequest();
+  var params = "email=" + email;
+  var notification = document.getElementById("inquiry_result");
+  xhr.open('post', 'http://api.teleports.me/inquiry');
+  xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xhr.setRequestHeader("Content-length", params.length);
+  xhr.setRequestHeader("Connection", "close");
+
+  xhr.onload = function() {
+    try {
+      var response = JSON.parse(this.responseText);
+      if(response.result == "OK") {
+        notification.textContent = "We have received your inquiry and will come back to you soon. Thank you!";
+        notification.className="notification success";
+      } else {
+        notification.textContent = "We have received your inquiry and will come back to you soon. Thank you!";
+        notification.className="notification error";
+      }
+    } catch(e) {
+      notification.innerHTML = "Whoops! Your server has a hiccup. <a href=\"mailto:hello@teleports.me?subject=Inquiry\">Please click here to try again</a>";
+      notification.className = "notification error";
+    }
+  }
+
+  xhr.onerror = function() {
+    notification.innerHTML = "Whoops! Your server has a hiccup. <a href=\"mailto:hello@teleports.me?subject=Inquiry\">Please click here to try again</a>";
+    notification.className = "notification error";
+  }
+
+  xhr.send(params);
+
+  return false;
+}, false);
+
+//
+// 3D Teleport stuff
+//
 
 function start(img) {
   window.scrollTo( 0, 0 );
@@ -218,4 +269,17 @@ function start(img) {
   document.getElementById("loading").style.display = "none";
   vrmgr.hideButton = false;
   vrmgr.vrButton.style.display = "block";
+}
+
+function stop(e) {
+  e.preventDefault();
+  e.stopPropagation();
+
+  if(window.location.hash.slice(1,5) == "show") window.location.hash = "";
+  document.querySelector("#mininav").style.display = "none";
+  document.querySelector("canvas").style.display = "none";
+  document.getElementById("publish").style.display = "none";
+  vrmgr.hideButton = true;
+  vrmgr.vrButton.style.display = "none";
+  return false;
 }

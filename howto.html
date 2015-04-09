@@ -1,63 +1,100 @@
-<!doctype html>
-<!doctype html>
-<html>
-    <head>
-        <title>Spots - How to create a Photo Sphere</title>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+Design by TEMPLATED
+http://templated.co
+Released for free under the Creative Commons Attribution License
 
-        <meta name=viewport content="width=device-width, initial-scale=1">
-        <meta name="mobile-web-app-capable" content="yes">
-        <meta name="apple-mobile-web-app-capable" content="yes">
+Name       : BarbedFlower
+Description: A two-column, fixed-width design with dark color scheme.
+Version    : 1.0
+Released   : 20140322
 
-        <link rel="icon" sizes="192x192" href="imgs/icon_192.png">
-        <link rel="icon" sizes="128x128" href="imgs/icon_128.png">
-        <link rel="apple-touch-icon" sizes="128x128" href="imgs/icon_128.png">
-        <link rel="apple-touch-icon-precomposed" sizes="128x128" href="imgs/icon_128.png">
-        <link rel="manifest" href="manifest.json">
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Teleports - 360° Virtual Reality</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="//fonts.googleapis.com/css?family=Varela" rel="stylesheet" />
+<link href="default.css" rel="stylesheet" type="text/css" media="all" />
+<link href="modal.css" rel="stylesheet" type="text/css" media="all" />
+<link href="fonts.css" rel="stylesheet" type="text/css" media="all" />
 
-        <style>
-            html, body, canvas {
-                margin: 0;
-                padding: 0;
-                width: 100%;
-                width: 100vw;
-                height: 100%;
-                height: 100vh;
+<meta name=viewport content="width=device-width, initial-scale=1">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
 
-                text-align: center;
-                font-family: Helvetica, Arial, sans-serif;
-            }
+<link rel="icon" sizes="192x192" href="imgs/icon_192.png">
+<link rel="icon" sizes="128x128" href="imgs/icon_128.png">
+<link rel="apple-touch-icon" sizes="128x128" href="imgs/icon_128.png">
+<link rel="apple-touch-icon-precomposed" sizes="128x128" href="imgs/icon_128.png">
+<link rel="manifest" href="manifest.json">
 
-            iframe {
-                width: 90%;
-            }
+<meta property="og:title" content="Teleports.me" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://teleports.me" />
+<meta property="og:image" content="http://teleports.me/imgs/icon_192.png" />
+<meta property="og:description" content="Teleports.me allows you to create and share a virtual reality location with your friends" />
+<meta property="og:site_name" content="Teleports.me" />
 
-        </style>
-    </head>
-    <body>
-        <h1>Spots</h1>
-        <h2>Adding a spot</h2>
-        <article>
-            <section>
-                <h3>What's a Photo Sphere?</h3>
-                <p>A Photo Sphere is a special picture, that includes a full 360° panorama, but also includes everything above and below you.</p>
-                <img src="">
-            </section>
-            <section>
-                <h3>How to make a Photo Sphere</h3>
-                <p>
-                    You can create a photosphere using the <a href="https://play.google.com/store/apps/details?id=com.google.android.GoogleCamera" target="_blank">Google Android Camera</a> for Android or
-                    the <a href="https://itunes.apple.com/app/id904418768?mt=8" target="_blank">Photo Sphere Camera</a> for iPhone and iPad.
-                </p>
-                <p>The following video shows how it works:</p>
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/NPs3eIiWRaw" frameborder="0" allowfullscreen></iframe>
-            </section>
-            <section>
-                <h3>How to create a new spot from a Photo Sphere</h3>
-                <p>Once you have captured a Photo Sphere on your phone or tablet, go to <a href="index.html">Our homepage</a> and tap into the yellow area.</p>
-                <p>You are then prompted to select the desired Photo Sphere image from your device and after a few seconds loading time will be warped right into it.</p>
-                <p>The following video gives an example:</p>
-                <iframe width="420" height="315" src="https://www.youtube.com/embed/BdQaAw1efMQ" frameborder="0" allowfullscreen></iframe>
-            </section>
-        </article>
-    </body>
+<!--[if IE 6]><link href="default_ie6.css" rel="stylesheet" type="text/css" /><![endif]-->
+
+<script type="text/javascript">
+  !function(a,b){a("Keen","https://d26b395fwzu5fz.cloudfront.net/3.2.4/keen.min.js",b)}(function(a,b,c){var d,e,f;c["_"+a]={},c[a]=function(b){c["_"+a].clients=c["_"+a].clients||{},c["_"+a].clients[b.projectId]=this,this._config=b},c[a].ready=function(b){c["_"+a].ready=c["_"+a].ready||[],c["_"+a].ready.push(b)},d=["addEvent","setGlobalProperties","trackExternalLink","on"];for(var g=0;g<d.length;g++){var h=d[g],i=function(a){return function(){return this["_"+a]=this["_"+a]||[],this["_"+a].push(arguments),this}};c[a].prototype[h]=i(h)}e=document.createElement("script"),e.async=!0,e.src=b,f=document.getElementsByTagName("script")[0],f.parentNode.insertBefore(e,f)},this);
+</script>
+
+</head>
+<body>
+<div id="wrapper" id="home">
+	<div id="header-wrapper">
+	<div id="header" class="container">
+		<div id="logo">
+			<h1><a href="/">Teleports</a></h1>
+		</div>
+		<div id="menu">
+			<ul>
+				<li><a href="index.html" accesskey="1" title="Home">Home</a></li>
+				<li><a href="/gallery" accesskey="2" title="Browse Teleport Gallery">Gallery</a></li>
+				<li><a href="index.html#create" accesskey="3" title="Create a Teleport">Add your teleport</a></li>
+				<li><a href="/map" accesskey="4" title="Map of Teleports">Map</a></li>
+				<li class="active"><a href="/howto" accesskey="5" title="See how to create your own 360° Teleport">Howto</a></li>
+				<li><a href="index.html#business" accesskey="6" title="Get us to create a Teleport for you">For Business</a></li>
+			</ul>
+		</div>
+	</div>
+	</div>
+
+    <article id="page" class="container">
+		<div class="title">
+			  <h2>How to create your own 360° Teleport</h2>
+			  <span class="byline">Share places from your smartphone or tablet</span>
+		</div>
+
+        <section>
+            <h3>What's a Photo Sphere?</h3>
+            <p>A Photo Sphere is a special picture, that includes a full 360° panorama, but also includes everything above and below you.</p>
+            <img src="">
+        </section>
+
+        <section>
+            <h3>How to make a Photo Sphere</h3>
+            <p>
+                You can create a photosphere using the <a href="https://play.google.com/store/apps/details?id=com.google.android.GoogleCamera" target="_blank">Google Android Camera</a> for Android or
+                the <a href="https://itunes.apple.com/app/id904418768?mt=8" target="_blank">Photo Sphere Camera</a> for iPhone and iPad.
+            </p>
+            <p>The following video shows how it works:</p>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/NPs3eIiWRaw" frameborder="0" allowfullscreen></iframe>
+        </section>
+
+        <section>
+            <h3>How to create a new Teleport from a Photo Sphere</h3>
+            <p>Once you have captured a Photo Sphere on your phone or tablet, go to <a href="index.html#create">Our homepage</a> and tap into the yellow area.</p>
+            <p>You are then prompted to select the desired Photo Sphere image from your device and after a few seconds loading time will be warped right into it.</p>
+            <p>The following video gives an example:</p>
+            <iframe width="420" height="315" src="https://www.youtube.com/embed/BdQaAw1efMQ" frameborder="0" allowfullscreen></iframe>
+        </section>
+    </article>
+</div>
+</body>
 </html>
