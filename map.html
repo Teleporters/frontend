@@ -58,30 +58,43 @@ Released   : 20140322
 	<div id="header-wrapper">
 	<div id="header" class="container">
 		<div id="logo">
-			<h1><a href="/">Teleports</a></h1>
+			<h1><a href="index.html">Teleports</a></h1>
 		</div>
 		<div id="menu">
 			<ul>
-				<li><a href="index.html" accesskey="1" title="Home">Home</a></li>
-				<!--li><a href="/gallery" accesskey="2" title="Browse Teleport Gallery">Gallery</a></li-->
-				<li><a href="index.html#create" accesskey="3" title="Create a Teleport">Add your teleport</a></li>
-				<li><a href="/map" accesskey="4" title="Map of Teleports">Map</a></li>
-				<li class="active"><a href="/howto" accesskey="5" title="See how to create your own 360° Teleport">Howto</a></li>
-				<li><a href="index.html#business" accesskey="6" title="Get us to create a Teleport for you">For Business</a></li>
-			</ul>
+        <li><a href="index.html" accesskey="1" title="Home">Home</a></li>
+        <!--li><a href="/gallery" accesskey="2" title="Browse Teleport Gallery">Gallery</a></li-->
+        <li><a href="index.html#create" accesskey="3" title="Upload your own Teleport">Make your own</a></li>
+        <li class="active"><a href="map.html" accesskey="4" title="Map of Teleports">Map</a></li>
+        <li><a href="howto.html" accesskey="5" title="See how to create your own 360° Teleport">Learn more</a></li>
+        <li><a href="index.html#business" accesskey="6" title="Get us to create a Teleport for you">For Business</a></li>
+      </ul>
 		</div>
 	</div>
 	</div>
 
     <article id="page" class="container">
 		<div class="title">
-			  <h2>How to create your own 360° Teleport</h2>
-			  <span class="byline">Share places from your smartphone or tablet</span>
+			  <h2>Map</h2>
+			  <span class="byline">Teleports across the world</span>
 		</div>
 
-        <div id="map"></div>
-    </article
+    <div id="map"></div>
 </div>
+
+<footer>
+  <div id="copyright" class="container">
+    <p>
+      &copy; 2015 Geekonaut. All rights reserved. | Header photo by <a href="http://commons.wikimedia.org/wiki/User:Alex.vonbun" rel="nofollow">Alexander Vonbun</a>, CC-BY-SA 2.5 | Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a>.
+      <br>
+      <a href="/terms.html">Terms of service</a> &nbsp; | &nbsp;
+      <a href="/privacy.html">Privacy policy</a> &nbsp; | &nbsp;
+      Made with <span style="color: red">&hearts;</span> in Zurich, Switzerland
+    </p>
+
+  </div>
+</footer>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js"></script>
 <script>
     var map = L.map('map').setView([47.367347, 8.5500025], 2);
