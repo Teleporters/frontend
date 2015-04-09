@@ -645,9 +645,23 @@
 
 	.dropzone input { display: none; }
 
+	.modal-content { text-align: center; }
+	.modal-content div { margin: 0.5em; }
+
 	/*********************************************************************************/
 	/* Rendering                                                                     */
 	/*********************************************************************************/
+
+	#loading {
+		position: fixed;
+		z-index: 20;
+		top: 50%;
+		top: 50vh;
+		left: 50%;
+
+		margin-left: -64px;
+		margin-top:  -64px;
+	}
 
     #mininav {
       position: absolute;
@@ -668,7 +682,7 @@
     }
 
 	canvas {
-		position: absolute;
+		position: fixed;
 		top:    0;
 		left:   0;
 		bottom: 0;
@@ -678,3 +692,182 @@
 
 		display: none;
 	}
+
+#upload_loading {
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 60px;
+  height: 60px;
+  animation: rotate 5s ease-out infinite;
+  -webkit-animation: rotate 5s ease-out infinite;
+  border-radius: 10px;
+  overflow: hidden;
+  display: none;
+  margin: 1em;
+}
+
+#upload_loading:before, .loader:after {
+  position: absolute;
+  content: '';
+  display: block;
+  width: 20px;
+  height: 20px;
+  left: 0;
+  top: 0;
+}
+
+#upload_loading:before {
+  background: #1BADB0;
+  box-shadow: 20px 0 0 #1BADB0, 40px 0 0 #1BADB0, 0 20px 0 #1BADB0, 20px 20px 0 #1BADB0, 40px 20px 0 #1BADB0, 0 40px 0 #1BADB0, 20px 40px 0 #1BADB0, 40px 40px 0 #1BADB0;
+  animation: one 5s ease infinite;
+}
+
+#upload_loading:after {
+  background: #163c8c;
+  box-shadow: 20px 0 0 #163c8c, 40px 0 0 #163c8c, 0 20px 0 #163c8c, 20px 20px 0 #163c8c, 40px 20px 0 #163c8c, 0 40px 0 #163c8c, 20px 40px 0 #163c8c, 40px 40px 0 #163c8c;
+  animation: two 5s ease infinite;
+  z-index: 2;
+}
+
+@keyframes one {
+  0% {
+    background: transparent;
+    box-shadow: 20px 0 0 #1BADB0, 40px 0 0 #1BADB0, 0 20px 0 #1BADB0, 20px 20px 0 #1BADB0, 40px 20px 0 #1BADB0, 0 40px 0 #1BADB0, 20px 40px 0 #1BADB0, 40px 40px 0 #1BADB0;
+    z-index: 1;
+  }
+  5% {
+    background: transparent;
+    box-shadow: 20px 0 0 transparent, 40px 0 0 #1BADB0, 0 20px 0 #1BADB0, 20px 20px 0 #1BADB0, 40px 20px 0 #1BADB0, 0 40px 0 #1BADB0, 20px 40px 0 #1BADB0, 40px 40px 0 #1BADB0;
+  }
+  10% {
+    background: transparent;
+    box-shadow: 20px 0 0 transparent, 40px 0 0 transparent, 0 20px 0 #1BADB0, 20px 20px 0 #1BADB0, 40px 20px 0 #1BADB0, 0 40px 0 #1BADB0, 20px 40px 0 #1BADB0, 40px 40px 0 #1BADB0;
+  }
+  15% {
+    background: transparent;
+    box-shadow: 20px 0 0 transparent, 40px 0 0 transparent, 0 20px 0 transparent, 20px 20px 0 #1BADB0, 40px 20px 0 #1BADB0, 0 40px 0 #1BADB0, 20px 40px 0 #1BADB0, 40px 40px 0 #1BADB0;
+  }
+  20% {
+    background: transparent;
+    box-shadow: 20px 0 0 transparent, 40px 0 0 transparent, 0 20px 0 transparent, 20px 20px 0 transparent, 40px 20px 0 #1BADB0, 0 40px 0 #1BADB0, 20px 40px 0 #1BADB0, 40px 40px 0 #1BADB0;
+  }
+  25% {
+    background: transparent;
+    box-shadow: 20px 0 0 transparent, 40px 0 0 transparent, 0 20px 0 transparent, 20px 20px 0 transparent, 40px 20px 0 transparent, 0 40px 0 #1BADB0, 20px 40px 0 #1BADB0, 40px 40px 0 #1BADB0;
+  }
+  30% {
+    background: transparent;
+    box-shadow: 20px 0 0 transparent, 40px 0 0 transparent, 0 20px 0 transparent, 20px 20px 0 transparent, 40px 20px 0 transparent, 0 40px 0 transparent, 20px 40px 0 #1BADB0, 40px 40px 0 #1BADB0;
+  }
+  35% {
+    background: transparent;
+    box-shadow: 20px 0 0 transparent, 40px 0 0 transparent, 0 20px 0 transparent, 20px 20px 0 transparent, 40px 20px 0 transparent, 0 40px 0 transparent, 20px 40px 0 transparent, 40px 40px 0 #1BADB0;
+  }
+  40% {
+    background: transparent;
+    box-shadow: 20px 0 0 transparent, 40px 0 0 transparent, 0 20px 0 transparent, 20px 20px 0 transparent, 40px 20px 0 transparent, 0 40px 0 transparent, 20px 40px 0 transparent, 40px 40px 0 transparent;
+  }
+  45% {
+    background: transparent;
+    box-shadow: 20px 0 0 transparent, 40px 0 0 transparent, 0 20px 0 transparent, 20px 20px 0 transparent, 40px 20px 0 transparent, 0 40px 0 transparent, 20px 40px 0 transparent, 40px 40px 0 transparent;
+    z-index: 1;
+  }
+  50%, 100% {
+    background: #1BADB0;
+    box-shadow: 20px 0 0 #1BADB0, 40px 0 0 #1BADB0, 0 20px 0 #1BADB0, 20px 20px 0 #1BADB0, 40px 20px 0 #1BADB0, 0 40px 0 #1BADB0, 20px 40px 0 #1BADB0, 40px 40px 0 #1BADB0;
+    z-index: 0;
+  }
+  100% {
+    z-index: 0;
+  }
+}
+@keyframes two {
+  0%,49% {
+    background: #163c8c;
+    z-index: 0;
+  }
+  50% {
+    background: transparent;
+    box-shadow: 20px 0 0 #163c8c, 40px 0 0 #163c8c, 0 20px 0 #163c8c, 20px 20px 0 #163c8c, 40px 20px 0 #163c8c, 0 40px 0 #163c8c, 20px 40px 0 #163c8c, 40px 40px 0 #163c8c;
+    z-index: 1;
+  }
+  55% {
+    background: transparent;
+    box-shadow: 20px 0 0 transparent, 40px 0 0 #163c8c, 0 20px 0 #163c8c, 20px 20px 0 #163c8c, 40px 20px 0 #163c8c, 0 40px 0 #163c8c, 20px 40px 0 #163c8c, 40px 40px 0 #163c8c;
+  }
+  60% {
+    background: transparent;
+    box-shadow: 20px 0 0 transparent, 40px 0 0 transparent, 0 20px 0 #163c8c, 20px 20px 0 #163c8c, 40px 20px 0 #163c8c, 0 40px 0 #163c8c, 20px 40px 0 #163c8c, 40px 40px 0 #163c8c;
+  }
+  65% {
+    background: transparent;
+    box-shadow: 20px 0 0 transparent, 40px 0 0 transparent, 0 20px 0 transparent, 20px 20px 0 #163c8c, 40px 20px 0 #163c8c, 0 40px 0 #163c8c, 20px 40px 0 #163c8c, 40px 40px 0 #163c8c;
+  }
+  70% {
+    background: transparent;
+    box-shadow: 20px 0 0 transparent, 40px 0 0 transparent, 0 20px 0 transparent, 20px 20px 0 transparent, 40px 20px 0 #163c8c, 0 40px 0 #163c8c, 20px 40px 0 #163c8c, 40px 40px 0 #163c8c;
+  }
+  75% {
+    background: transparent;
+    box-shadow: 20px 0 0 transparent, 40px 0 0 transparent, 0 20px 0 transparent, 20px 20px 0 transparent, 40px 20px 0 transparent, 0 40px 0 #163c8c, 20px 40px 0 #163c8c, 40px 40px 0 #163c8c;
+  }
+  80% {
+    background: transparent;
+    box-shadow: 20px 0 0 transparent, 40px 0 0 transparent, 0 20px 0 transparent, 20px 20px 0 transparent, 40px 20px 0 transparent, 0 40px 0 transparent, 20px 40px 0 #163c8c, 40px 40px 0 #163c8c;
+  }
+  85% {
+    background: transparent;
+    box-shadow: 20px 0 0 transparent, 40px 0 0 transparent, 0 20px 0 transparent, 20px 20px 0 transparent, 40px 20px 0 transparent, 0 40px 0 transparent, 20px 40px 0 transparent, 40px 40px 0 #163c8c;
+  }
+  90% {
+    background: transparent;
+    box-shadow: 20px 0 0 transparent, 40px 0 0 transparent, 0 20px 0 transparent, 20px 20px 0 transparent, 40px 20px 0 transparent, 0 40px 0 transparent, 20px 40px 0 transparent, 40px 40px 0 transparent;
+  }
+  95% {
+    background: transparent;
+    box-shadow: 20px 0 0 transparent, 40px 0 0 transparent, 0 20px 0 transparent, 20px 20px 0 transparent, 40px 20px 0 transparent, 0 40px 0 transparent, 20px 40px 0 transparent, 40px 40px 0 transparent;
+    z-index: 1;
+  }
+  100% {
+    background: #163c8c;
+    box-shadow: 20px 0 0 #163c8c, 40px 0 0 #163c8c, 0 20px 0 #163c8c, 20px 20px 0 #163c8c, 40px 20px 0 #163c8c, 0 40px 0 #163c8c, 20px 40px 0 #163c8c, 40px 40px 0 #163c8c;
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  25% {
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+  50% {
+    transform: translate(-50%, -50%) rotate(180deg);
+  }
+  75% {
+    transform: translate(-50%, -50%) rotate(270deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@-webkit-keyframes rotate {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  25% {
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+  50% {
+    transform: translate(-50%, -50%) rotate(180deg);
+  }
+  75% {
+    transform: translate(-50%, -50%) rotate(270deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}

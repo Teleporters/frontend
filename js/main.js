@@ -91,6 +91,7 @@ if(isWebGLAvailable) {
   effect.setSize(window.innerWidth, window.innerHeight);
 
   vrmgr = new WebVRManager(effect, {hideButton: true});
+  vrmgr.vrButton.style.zIndex = 35;
   cam = World.getCamera();
   cam.rotation.order = 'YXZ';
   controls = new VRControls(cam);
@@ -119,6 +120,7 @@ if(isWebGLAvailable) {
   window.addEventListener("hashchange", function() {
     if(window.location.hash.slice(1,5) == "show") {
       document.getElementById("loading").style.display = "inline-block";
+      console.log("Off we go again!");
       start(window.location.hash.slice(6));
     }
   });
@@ -157,23 +159,26 @@ function stop(e) {
 
 function handleUpload(e) {
   document.getElementById("submit_button").style.display = "inline-block";
-  document.getElementById("loading").style.display = "block";
+  document.getElementById("upload_loading").style.display = "block";
   document.getElementById("publish").style.display = "inline";
 	e.stopPropagation();
 	e.preventDefault();
 
   var files = e.target.files;
   if(files.length < 1) return;
-
-  var reader = new FileReader();
-  reader.readAsDataURL(files[0]);
-  reader.onload = function(e) {
-    var img = new Image();
-    img.src = e.target.result;
-    img.onload = function() {
-      start(img);
+  setTimeout(function() {
+    var reader = new FileReader();
+    reader.readAsDataURL(files[0]);
+    reader.onload = function(e) {
+      var img = new Image();
+      img.src = e.target.result;
+      img.onload = function() {
+        start(img);
+      }
+      document.getElementById("preview").src = e.target.result;
+      document.getElementById("upload_loading").style.display = "none";
     }
-  }
+  }, 100);
 }
 
 if(dropzone) {
@@ -196,6 +201,7 @@ if(document.getElementById("publish")) {
 }
 
 function start(img) {
+  window.scrollTo( 0, 0 );
   document.querySelector("#mininav").style.display = "inline";
   document.querySelector("canvas").style.display = "block";
 
