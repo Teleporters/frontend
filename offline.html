@@ -10,13 +10,13 @@ Version    : 1.0
 Released   : 20140322
 
 -->
-<html>
+<html manifest="manifest.appcache">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Teleports</title>
 <meta name="keywords" content="" />
 <meta name="description" content="" />
-<link href="//fonts.googleapis.com/css?family=Varela" rel="stylesheet" />
+<link href="http://fonts.googleapis.com/css?family=Varela" rel="stylesheet" />
 <link href="default.css" rel="stylesheet" type="text/css" media="all" />
 <link href="fonts.css" rel="stylesheet" type="text/css" media="all" />
 
@@ -30,9 +30,35 @@ Released   : 20140322
 <link rel="apple-touch-icon-precomposed" sizes="128x128" href="images/icon_128.png">
 <link rel="manifest" href="manifest.json">
 
+<style>
+  .dropzone {
+    position: absolute;
+    left:   2em;
+    right:  2em;
+    top:    2em;
+    bottom: 2em;
+
+    font-size: 2em;
+    line-height: 2em;
+  }
+</style>
+
 </head>
 <body>
-  
+  <img id="loading" src="images/loading.gif" style="display: none">
+  <nav id="mininav" style="display:none">
+    <a class="button back" href="index.html">Back</a>
+  </nav>
+
+  <form id="upload_form" action="http://api.teleports.me/spots" method="post" enctype="multipart/form-data">
+    <label class="dropzone">Click or drag here to select a photo sphere
+      <input type="file" name="file" accept="image/*" id="spot_img">
+    </label>
+    <div>
+      <div id="upload_loading"></div>
+    </div>
+
+  <script src="hammer.min.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

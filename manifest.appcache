@@ -1,21 +1,13 @@
 CACHE MANIFEST
-#V10 2015-03-26
+#V11 2015-04-12
 
 # Application
-index.html
+offline.html
 app.js
-
-# Panoramas
-https://res.cloudinary.com/geekonaut/image/upload/spots/zurich_1.jpg
-https://res.cloudinary.com/geekonaut/image/upload/spots/zurich_2.jpg
-https://res.cloudinary.com/geekonaut/image/upload/spots/zurich_3.jpg
-https://res.cloudinary.com/geekonaut/image/upload/spots/zurich_4.jpg
-
-# Thumbs
-https://res.cloudinary.com/geekonaut/image/upload/c_thumb,h_250,w_250/spots/zurich_1.jpg
-https://res.cloudinary.com/geekonaut/image/upload/c_thumb,h_250,w_250/spots/zurich_2.jpg
-https://res.cloudinary.com/geekonaut/image/upload/c_thumb,h_250,w_250/spots/zurich_3.jpg
-https://res.cloudinary.com/geekonaut/image/upload/c_thumb,h_250,w_250/spots/zurich_4.jpg
+hammer.min.js
+default.css
+fonts.css
+http://fonts.googleapis.com/css?family=Varela
 
 # Icons
 images/icon_128.png

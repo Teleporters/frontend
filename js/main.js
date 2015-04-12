@@ -4,11 +4,12 @@ var World = require('three-world'),
     VREffect = require('./vendor/VREffect'),
     VRControls = require('./vendor/VRControls'),
     WebVRPolyfill = require('./vendor/new-webvr-polyfill');
-
-var keen = new Keen({
-  projectId: "5524d0fe46f9a729f32a51ab",
-  writeKey: "4de50dbca92183ab6494f69b0376b8e68aa71611009f206ff921d962856cfcba43b101aa445f1769f44d5ef0eed55e24901fff2dbaf3b9457f82e2090227354ab40525a8630a2320dbd8b165d4ab8a08c53451d00b64663cfdd9d27e36d1c95e6352897d3a3002d41bccddf03c5836fb"
-});
+if(typeof Keen !== "undefined") {
+  var keen = new Keen({
+    projectId: "5524d0fe46f9a729f32a51ab",
+    writeKey: "4de50dbca92183ab6494f69b0376b8e68aa71611009f206ff921d962856cfcba43b101aa445f1769f44d5ef0eed55e24901fff2dbaf3b9457f82e2090227354ab40525a8630a2320dbd8b165d4ab8a08c53451d00b64663cfdd9d27e36d1c95e6352897d3a3002d41bccddf03c5836fb"
+  });
+}
 
 var isWebGLAvailable = (function() {
   try {
@@ -83,8 +84,8 @@ window.location.search.split("&").forEach(function(p) {
 // WebGL init & all related setup
 
 if(isWebGLAvailable) {
-  ga('set', 'dimension1', 'Yes');
-  keen.addEvent("webgl", {supported: 'Yes'});
+  if(typeof ga !== "undefined") ga('set', 'dimension1', 'Yes');
+  if(typeof keen !== "undefined") keen.addEvent("webgl", {supported: 'Yes'});
 
   World.init({
     camDistance: 0,
@@ -137,8 +138,8 @@ if(isWebGLAvailable) {
   }
 } else {
   document.getElementById("fallback").style.display = "block";
-  ga('set', 'dimension1', 'No');
-  keen.addEvent("webgl", {supported: 'No'});
+  if(typeof ga !== "undefined") ga('set', 'dimension1', 'No');
+  if(typeof keen !== "undefined") keen.addEvent("webgl", {supported: 'No'});
 }
 
 //
@@ -159,9 +160,9 @@ function handleDragHover(e) {
 //
 
 function handleUpload(e) {
-  document.getElementById("submit_button").style.display = "inline-block";
+  if(document.getElementById("submit_button")) document.getElementById("submit_button").style.display = "inline-block";
   document.getElementById("upload_loading").style.display = "block";
-  document.getElementById("publish").style.display = "inline";
+  if(document.getElementById("publish")) document.getElementById("publish").style.display = "inline";
 	e.stopPropagation();
 	e.preventDefault();
 
@@ -176,7 +177,7 @@ function handleUpload(e) {
       img.onload = function() {
         start(img);
       }
-      document.getElementById("preview").src = e.target.result;
+      if(document.getElementById("preview")) document.getElementById("preview").src = e.target.result;
       document.getElementById("upload_loading").style.display = "none";
     }
   }, 100);
@@ -205,47 +206,49 @@ if(document.getElementById("publish")) {
   })
 }
 
-document.getElementById("inquiry_submit").addEventListener("click", function(e) {
-  e.preventDefault();
+if(document.getElementById("inquiry_submit")) {
+  document.getElementById("inquiry_submit").addEventListener("click", function(e) {
+    e.preventDefault();
 
-  var email = document.querySelector("input[name='email']").value;
-  if(email == "" || email.indexOf("@") === false) {
-    alert("Please enter your email address");
-  }
+    var email = document.querySelector("input[name='email']").value;
+    if(email == "" || email.indexOf("@") === false) {
+      alert("Please enter your email address");
+    }
 
-  var xhr = new XMLHttpRequest();
-  var params = "email=" + email;
-  var notification = document.getElementById("inquiry_result");
-  xhr.open('post', 'http://api.teleports.me/inquiry');
-  xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  xhr.setRequestHeader("Content-length", params.length);
-  xhr.setRequestHeader("Connection", "close");
+    var xhr = new XMLHttpRequest();
+    var params = "email=" + email;
+    var notification = document.getElementById("inquiry_result");
+    xhr.open('post', 'http://api.teleports.me/inquiry');
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhr.setRequestHeader("Content-length", params.length);
+    xhr.setRequestHeader("Connection", "close");
 
-  xhr.onload = function() {
-    try {
-      var response = JSON.parse(this.responseText);
-      if(response.result == "OK") {
-        notification.textContent = "We have received your inquiry and will come back to you soon. Thank you!";
-        notification.className="notification success";
-      } else {
-        notification.textContent = "We have received your inquiry and will come back to you soon. Thank you!";
-        notification.className="notification error";
+    xhr.onload = function() {
+      try {
+        var response = JSON.parse(this.responseText);
+        if(response.result == "OK") {
+          notification.textContent = "We have received your inquiry and will come back to you soon. Thank you!";
+          notification.className="notification success";
+        } else {
+          notification.textContent = "We have received your inquiry and will come back to you soon. Thank you!";
+          notification.className="notification error";
+        }
+      } catch(e) {
+        notification.innerHTML = "Whoops! Your server has a hiccup. <a href=\"mailto:hello@teleports.me?subject=Inquiry\">Please click here to try again</a>";
+        notification.className = "notification error";
       }
-    } catch(e) {
+    }
+
+    xhr.onerror = function() {
       notification.innerHTML = "Whoops! Your server has a hiccup. <a href=\"mailto:hello@teleports.me?subject=Inquiry\">Please click here to try again</a>";
       notification.className = "notification error";
     }
-  }
 
-  xhr.onerror = function() {
-    notification.innerHTML = "Whoops! Your server has a hiccup. <a href=\"mailto:hello@teleports.me?subject=Inquiry\">Please click here to try again</a>";
-    notification.className = "notification error";
-  }
+    xhr.send(params);
 
-  xhr.send(params);
-
-  return false;
-}, false);
+    return false;
+  }, false);
+}
 
 //
 // 3D Teleport stuff
@@ -253,8 +256,8 @@ document.getElementById("inquiry_submit").addEventListener("click", function(e) 
 
 function start(img) {
   window.scrollTo( 0, 0 );
-  document.querySelector("#mininav").style.display = "inline";
-  document.querySelector("canvas").style.display = "block";
+  if(document.querySelector("#mininav")) document.querySelector("#mininav").style.display = "inline";
+  if(document.querySelector("canvas")) document.querySelector("canvas").style.display = "block";
 
   if((typeof img) === "string") material.map = THREE.ImageUtils.loadTexture("http://teleports.s3-website-eu-west-1.amazonaws.com/portals/" + img + ".jpg");
   else {
