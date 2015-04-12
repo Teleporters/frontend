@@ -640,7 +640,7 @@
 		position: relative;
 		width: 250px;
 		height: 250px;
-		margin-bottom: 1em;
+		margin: 0 0.2em;
 	}
 
   .tile img {

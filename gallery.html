@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!doctype html>>
 <!--
 Design by TEMPLATED
 http://templated.co
@@ -10,7 +10,7 @@ Version    : 1.0
 Released   : 20140322
 
 -->
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Teleports - 360° Virtual Reality</title>
@@ -47,32 +47,28 @@ Released   : 20140322
 </head>
 <body>
 <div id="wrapper" id="home">
-	<div id="header-wrapper">
-	<div id="header" class="container">
-		<div id="logo">
-			<h1><a href="index.html">Teleports</a></h1>
-		</div>
-		<div id="menu">
-			<ul>
-        <li><a href="index.html" accesskey="1" title="Home">Home</a></li>
-        <li><a href="/gallery.html" accesskey="2" title="Browse Teleport Gallery">Gallery</a></li>
-        <li><a href="index.html#create" accesskey="3" title="Upload your own Teleport">Make your own</a></li>
-        <li><a href="map.html" accesskey="4" title="Map of Teleports">Map</a></li>
-        <li><a href="howto.html" accesskey="5" title="See how to create your own 360° Teleport">Learn more</a></li>
-        <li><a href="index.html#business" accesskey="6" title="Get us to create a Teleport for you">For Business</a></li>
-      </ul>
-		</div>
-	</div>
-	</div>
+  <div id="header-wrapper">
+    <div id="header" class="container">
+      <div id="logo">
+        <h1><a href="index.html">Teleports</a></h1>
+      </div>
+      <div id="menu">
+        <ul>
+          <li><a href="index.html" accesskey="1" title="Home">Home</a></li>
+          <li class="active"><a href="gallery.html" accesskey="2" title="Browse Teleport Gallery">Gallery</a></li>
+          <li><a href="index.html#create" accesskey="3" title="Upload your own Teleport">Make your own</a></li>
+          <li><a href="map.html" accesskey="4" title="Map of Teleports">Map</a></li>
+          <li><a href="howto.html" accesskey="5" title="See how to create your own 360° Teleport">Learn more</a></li>
+          <li><a href="index.html#business" accesskey="6" title="Get us to create a Teleport for you">For Business</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
 
-    <article id="page" class="container">
-		<h2>Imprint</h2>
-
-		<div class="box">
-			<p>Teleports.me is operated by <a href="http://www.geekonaut.de">Geekonaut</a>, Zurich Switzerland.</p>
-			<p>In case of questions, requests or problems, feel free to contact us at <a href="mailto:hello@teleports.me">hello - at - teleports.me</a></p>
-		</div>
-	</article>
+  <article id="page" class="container">
+    <h2>Teleports Gallery</h2>
+    <section id="gallery"></section>
+  </article>
 
   <footer>
     <div id="copyright" class="container">
@@ -86,6 +82,37 @@ Released   : 20140322
 
     </div>
   </footer>
+
+  <script>
+    var gallery = document.getElementById("gallery"),
+        xhr = new XMLHttpRequest();
+
+    xhr.open("get", "http://api.teleports.me/spots", true);
+
+    xhr.onload = function() {
+      try {
+        var teleports = JSON.parse(this.responseText);
+        var fragment = document.createDocumentFragment();
+        for(var i=0; i<teleports.length; i++) {
+          var tile = document.createElement("div");
+          tile.className = "tile";
+          tile.innerHTML = "<a href=\"index.html#show=" +teleports[i].file + "\"><img src=\"http://teleports.s3-website-eu-west-1.amazonaws.com/thumbs/" +teleports[i].file + ".png\" width=\"250\"></a>";
+          fragment.appendChild(tile);
+        }
+        gallery.appendChild(fragment);
+      } catch(e) {
+        console.error(e);
+        gallery.textContent = "Oh, uh, what? I can't load the teleport gallery! Sorry! :(";
+      }
+    }
+
+
+    xhr.onerror = function() {
+      gallery.textContent = "Aww, dang! I can't load the teleport gallery :(";
+    }
+
+    xhr.send();
+  </script>
 
 </body>
 </html>
