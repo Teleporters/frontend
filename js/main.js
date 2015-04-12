@@ -54,7 +54,7 @@ window.location.search.split("&").forEach(function(p) {
 
   if(parts[0].replace("?", "") == "public_id") {
     var slug = decodeURIComponent(parts[1]);
-    window.location.hash = "#show=" + slug.replace("spots/", "");
+    window.location.hash = "#show=" + slug.replace("/", "");
     var shareLink = window.location.origin + window.location.pathname + "#show=" + slug.replace("spots/", "");
     document.getElementById("share_link").value = shareLink;
     var shareButtons = document.querySelectorAll(".st");

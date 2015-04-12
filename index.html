@@ -142,7 +142,7 @@ Released   : 20140322
 
       <ul class="actions">
         <li><a href="#create" class="button">Make a Teleport</a></li>
-      </ul>      
+      </ul>
 
     </div>
 
@@ -260,6 +260,32 @@ Released   : 20140322
 
 	<a href="#!" class="modal-close" title="Close this modal" data-close="Close"
 	data-dismiss="modal">Close</a>
+</section>
+
+<section class="modal--show" id="share" tabindex="-1" role="dialog" style="z-index:50" aria-labelledby="modal-label" aria-hidden="true">
+  <div class="modal-inner">
+    <header id="modal-label"><h2>Share your teleport</h2></header>
+    <div class="modal-content">
+      <p><strong>Yay!</strong> Your teleport was successfully uploaded and can now be shared using this link:</p>
+      <button id="copy_share_link" style="float: right; width: 90px;" type="button">Copy</button>
+      <div style="padding-right: 100px;">
+        <input id="share_link" style="display:inline-block; width: 100%;" onclick="this.select();">
+      </div>
+      <p>
+        <span class='st_sharethis_large st' title='ShareThis'></span>
+        <span class='st_facebook_large st' title='Facebook'></span>
+        <span class='st_twitter_large st' title='Tweet'></span>
+        <span class='st_linkedin_large st' title='LinkedIn'></span>
+        <span class='st_reddit_large st' title='Reddit'></span>
+        <span class='st_tumblr_large st' title='Tumblr'></span>
+        <span class='st_pinterest_large st' title='Pinterest'></span>
+        <span class='st_email_large st' title='Email'></span>
+      </p>
+    </div>
+  </div>
+
+  <a href="#!" class="modal-close" title="Close this modal" data-close="Close"
+  data-dismiss="modal">Close</a>
 </section>
 
 <script src="ZeroClipboard.js"></script>
