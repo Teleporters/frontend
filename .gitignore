@@ -1,1 +1,4 @@
 CNAME
+deploy/
+node_modules
+*.pid
