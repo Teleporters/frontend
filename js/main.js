@@ -126,7 +126,6 @@ if(isWebGLAvailable) {
   window.addEventListener("hashchange", function() {
     if(window.location.hash.slice(1,5) == "show") {
       document.getElementById("loading").style.display = "inline-block";
-      console.log("Off we go again!");
       start(window.location.hash.slice(6));
     }
   });
@@ -281,7 +280,7 @@ function stop(e) {
   if(window.location.hash.slice(1,5) == "show") window.location.hash = "";
   document.querySelector("#mininav").style.display = "none";
   document.querySelector("canvas").style.display = "none";
-  document.getElementById("publish").style.display = "none";
+  if(document.getElementById("publish")) document.getElementById("publish").style.display = "none";
   vrmgr.hideButton = true;
   vrmgr.vrButton.style.display = "none";
   return false;
