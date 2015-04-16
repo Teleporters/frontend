@@ -1,4 +1,4 @@
-<!doctype html>>
+<!doctype html>
 <!--
 Design by TEMPLATED
 http://templated.co
@@ -46,7 +46,7 @@ Released   : 20140322
 
 </head>
 <body>
-<div id="wrapper" id="home">
+<div id="home">
 	<div id="header-wrapper">
 	<div id="header" class="container">
 		<div id="logo">
@@ -143,9 +143,6 @@ Released   : 20140322
       <ul class="actions">
         <li><a href="#create" class="button">Make a Teleport</a></li>
       </ul>
-
-    </div>
-
   </article>
 
 	<div id="page" class="container">
@@ -161,9 +158,9 @@ Released   : 20140322
 			pictures often can't really capture the moment.
 		</p>
 
+		<p>But thanks to affordable Virtual Reality hardware and smartphones or tablets, you now have a better way!</p>
 		<p>
-			But thanks to affordable Virtual Reality hardware and smartphones or tablets, you now have a better way!
-			Just <a href="/howto">take a photo sphere image</a> with your device, <a href="#create">upload it</a> to Teleports.me
+      Just <a href="/howto">take a photo sphere image</a> with your device, <a href="#create">upload it</a> to Teleports.me
 			and share it with those who matter to you - family, friends or others.
 		</p>
 		<ul class="actions">
@@ -206,7 +203,7 @@ Released   : 20140322
 
 			<form id="inquiry_form" action="http://api.teleports.me/inquiry" method="post">
 				<label for="email">Your email address:
-					<input type="email" name="email" required>
+					<input type="email" id="email" name="email" required>
 				</label>
 				<div>
 					<button type="submit" class="button" style="margin: 0" id="inquiry_submit">Send inquiry</button>
@@ -215,8 +212,6 @@ Released   : 20140322
 			</form>
 		</div>
 	</div>
-
-
 </div>
 <footer>
 	<div id="copyright" class="container">
@@ -231,15 +226,15 @@ Released   : 20140322
 	</div>
 </footer>
 
-<img id="loading" src="images/loading.gif" style="display: none">
+<img id="loading" src="images/loading.gif" alt="Loading..." style="display: none">
 <nav id="mininav" style="display:none">
   <button id="publish" style="display:none" class="button button-confirm" type="button">Publish this</button>
   <a class="button back" href="index.html">Back</a>
 </nav>
 
-<section class="modal--show" id="create" tabindex="-1" role="dialog" aria-labelledby="modal-label" aria-hidden="true">
+<section class="modal--show" id="create" tabindex="-1" role="dialog" aria-labelledby="modal1-label" aria-hidden="true">
 	<div class="modal-inner">
-		<header id="modal-label"><h2>Create a teleport</h2></header>
+		<header id="modal1-label"><h2>Create a teleport</h2></header>
 		<div class="modal-content">
 			<p>Create a photo sphere (<a href="/howto">click here to learn how</a>) and upload it below:</p>
 			<form id="upload_form" action="http://api.teleports.me/spots" method="post" enctype="multipart/form-data">
@@ -248,7 +243,7 @@ Released   : 20140322
 				</label>
 				<div>
 				  <div id="upload_loading"></div>
-  				<img id="preview" height="100">
+  				<img id="preview" src="images/spacer.gif" alt="Preview" height="100">
 				</div>
 
 				<p>By publishing a picture, you agree to <a href="terms.html" target="_blank">our Terms</a> and <a href="privacy.html">our privacy policy</a>.</p>
@@ -262,9 +257,9 @@ Released   : 20140322
 	data-dismiss="modal">Close</a>
 </section>
 
-<section class="modal--show" id="share" tabindex="-1" role="dialog" style="z-index:50" aria-labelledby="modal-label" aria-hidden="true">
+<section class="modal--show" id="share" tabindex="-1" role="dialog" style="z-index:50" aria-labelledby="modal2-label" aria-hidden="true">
   <div class="modal-inner">
-    <header id="modal-label"><h2>Share your teleport</h2></header>
+    <header id="modal2-label"><h2>Share your teleport</h2></header>
     <div class="modal-content">
       <p><strong>Yay!</strong> Your teleport was successfully uploaded and can now be shared using this link:</p>
       <button id="copy_share_link" style="float: right; width: 90px;" type="button">Copy</button>
@@ -281,6 +276,21 @@ Released   : 20140322
         <span class='st_pinterest_large st' title='Pinterest'></span>
         <span class='st_email_large st' title='Email'></span>
       </p>
+    </div>
+  </div>
+
+  <a href="#!" class="modal-close" title="Close this modal" data-close="Close"
+  data-dismiss="modal">Close</a>
+</section>
+
+<section class="modal--show" id="fallback" tabindex="-1" role="dialog" style="z-index:50" aria-labelledby="modal3-label" aria-hidden="true">
+  <div class="modal-inner">
+    <header id="modal3-label"><h2>Oh snap!</h2></header>
+    <div class="modal-content">
+      <p>Your browser and/or computer is unable to show Teleports</p>
+      <p>Fear not, there is help. <a href="https://get.webgl.org">Check out this website</a> for more information.</p>
+      <p>Teleports will show the images, but you won't be able to use Virtual Reality or turn around in them.</p>
+      <img id="fallback_img" alt="Image" src="images/spacer.gif">
     </div>
   </div>
 
