@@ -136,7 +136,11 @@ if(isWebGLAvailable) {
     if(window.sharing) window.location.hash = "#share";
   }
 } else {
-  document.getElementById("fallback").style.display = "block";
+  if(window.location.hash.slice(1,5) == "show") {
+    var imgName = window.location.hash.slice(6);
+    window.location.hash = '#fallback';
+    document.getElementById("fallback_img").src = "http://teleports.s3-website-eu-west-1.amazonaws.com/portals/" + imgName + ".jpg";
+  }
   if(typeof ga !== "undefined") ga('set', 'dimension1', 'No');
   if(typeof keen !== "undefined") keen.addEvent("webgl", {supported: 'No'});
 }
@@ -151,7 +155,7 @@ function handleDragHover(e) {
 	e.stopPropagation();
 	e.preventDefault();
 
-	e.target.className = (e.type == "dragover" ? "dropzone dropzone-hover" : "dropzone");
+	e.target.parentNode.className = (e.type == "dragover" ? "dropzone dropzone-hover" : "dropzone");
 }
 
 //
@@ -229,10 +233,11 @@ if(document.getElementById("inquiry_submit")) {
           notification.textContent = "We have received your inquiry and will come back to you soon. Thank you!";
           notification.className="notification success";
         } else {
-          notification.textContent = "We have received your inquiry and will come back to you soon. Thank you!";
+          notification.innerHTML = "Whoops! That didn't work... <a href=\"mailto:hello@teleports.me?subject=Inquiry\">Please click here to try again</a>";
           notification.className="notification error";
         }
       } catch(e) {
+        console.error(e);
         notification.innerHTML = "Whoops! Your server has a hiccup. <a href=\"mailto:hello@teleports.me?subject=Inquiry\">Please click here to try again</a>";
         notification.className = "notification error";
       }

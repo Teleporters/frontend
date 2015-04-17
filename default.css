@@ -690,6 +690,7 @@
 		margin: 0 auto;
 		text-align: center;
 		box-sizing: border-box;
+		position: relative;
 	}
 
 	.dropzone-hover {
@@ -697,7 +698,15 @@
 		background: #afa;
 	}
 
-	.dropzone input { display: none; }
+	.dropzone input {
+		opacity: 0;
+		position: absolute;
+		left:   0;
+		right:  0;
+		top:    0;
+		bottom: 0;
+		width: 100%;
+	}
 
 	.modal-content { text-align: center; }
 	.modal-content div { margin: 0.5em; }
@@ -713,7 +722,7 @@
 
 	.success {
 		background-color: #afa;
-		color: #800;
+		color: #030;
 		border: 1px solid green;
 	}
 
