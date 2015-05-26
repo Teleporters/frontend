@@ -56,13 +56,14 @@ window.location.search.split("&").forEach(function(p) {
   if(parts[0].replace("?", "") == "public_id") {
     var slug = decodeURIComponent(parts[1]);
     window.location.hash = "#show=" + slug.replace("/", "");
-    var shareLink = window.location.origin + window.location.pathname + "#show=" + slug.replace("spots/", "");
+    var shareLink = "http://spots.teleports.me/" + slug.replace("/", "");
     document.getElementById("share_link").value = shareLink;
     var shareButtons = document.querySelectorAll(".st");
     for(var i=0; i<shareButtons.length;i++) {
       shareButtons[i].setAttribute("st_url", shareLink);
       shareButtons[i].setAttribute("st_title", "Check out this teleport I made!");
       shareButtons[i].setAttribute("st_summary", "Check out this teleport I made!");
+      shareButtons[i].setAttribute("st_image", "http://teleports.s3-website-eu-west-1.amazonaws.com/portals/" + slug.replace("/") + ".jpg")
     };
     stLight.options({publisher: "81197603-e22b-4944-9e98-d0fedc2573af", doNotHash: false, doNotCopy: false, hashAddressBar: false});
 
